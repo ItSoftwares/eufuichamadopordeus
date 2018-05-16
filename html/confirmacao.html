@@ -1,0 +1,43 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="https://<? echo $_SERVER['SERVER_NAME'] ?>/css/confirmacao.css">
+</head>
+<div id="confirmacao-tela">
+	<div>
+		<img src="https://<? echo $_SERVER['SERVER_NAME'] ?>/img/fechar.png" id="confirmacao-fechar">
+		<p class="confirmacao-mensagem">
+			
+		</p>
+		<ul class="confirmacao-botoes">
+			<li id="botao-sim">Sim</li>
+			<li id="botao-nao">Não</li>
+		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$("#confirmacao-tela").hide();
+	$("#confirmacao-tela > div > img").click(function() {$("#confirmacao-tela").fadeOut()});
+	
+	function chamarConfirmacao(texto, sim, nao) {
+		
+		$(".confirmacao-mensagem").html(texto);
+		$("#confirmacao-tela").fadeIn().css("display","flex");
+		
+		$("#botao-sim").click(function() {
+			sim();
+            $(this).unbind("click");
+		});
+		$("#botao-nao").click(function() {
+			nao();
+            $(this).unbind("click");
+		});
+	}
+    
+    $("#botao-sair").click(function() {
+        chamarConfirmacao("Deseja realmente sair", function() {
+            location.href = "logout";
+        }, function() {
+            $("#confirmacao-tela > div > img").click();
+        });
+    });
+</script>

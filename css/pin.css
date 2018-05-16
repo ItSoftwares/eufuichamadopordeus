@@ -1,0 +1,70 @@
+#pin *:not(i), #geral *:not(i) {
+	font-family: Ubuntu;
+}
+
+#pin h1 {
+	text-align: center;
+	font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#pin {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: white;
+    z-index: 5;	
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+#codigo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    margin: 50px 0;	
+}
+
+#pin .input {
+	width: 50px;
+    margin: 0 20px;
+    font-size: 30px;
+}
+
+#pin input {
+	color: black;
+	text-align: center;;
+	padding: 10px 0;
+    background: none;
+    width: 100%;
+    padding: 10px 5px;
+    transition: .3s ease;
+    border-bottom: 2px solid #e2e2e2;
+    font-size: .85em;
+    resize: none;
+    height: 41px;
+    box-sizing: border-box;
+}
+
+#pin input:focus {
+	border-bottom-color: #2196F3;
+}
+
+*:disabled {
+	opacity: .5 !important;
+    cursor: no-drop !important;
+    background: #e2e2e2 !important;
+    color: black !important;
+    font-weight: bold;
+}
+
+#pin input::-webkit-outer-spin-button,
+#pin input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}

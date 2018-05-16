@@ -1,0 +1,96 @@
+/*---------------------------------------------*/
+/*--------------------GERAL--------------------*/
+/*---------------------------------------------*/
+
+#erro, #informacao, #confirmacao {
+    font-family: raleway;
+	z-index: 1001;
+/*   display: none; */
+	visibility: hidden;
+	position: fixed;
+	right: -500px;
+	bottom: 10px;
+	width: 400px;
+	height: 100px;
+	box-shadow: 1px 1px 5px rgba(0,0,0,.8);
+	border-radius: 5px;
+
+	transition: right 1s ease, bottom 0.6s ease-out;
+    font-family: encode;
+    cursor: pointer;
+    opacity: .9;
+    background: white;
+}
+
+div.imagem-popup {
+    float: left;
+    width: 75px;
+    height: 100px;
+    border-radius: 5px 0 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.imagem-popup img {
+    width: 25px;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+div.mensagem {
+	float: right;
+	width: 325px;
+	height: 100px;
+	border-radius: 0 5px 5px 0;
+}
+ 
+#erro h4, #erro p, #informacao h4, #informacao p, #confirmacao h4, #confirmacao p {
+/*	padding-top: 10px;*/
+}
+
+#erro h4, #informacao h4, #confirmacao h4 {
+	font-weight: bold;
+    padding: 10px 0 5px
+}
+
+#erro p, #informacao p, #confirmacao p {
+/*    font-size: 1.1vw;*/
+}
+
+/*---------------------------------------------*/
+/*---------------------ERRO--------------------*/
+/*---------------------------------------------*/
+
+#erro .imagem-popup img {
+	background-color: #ef6644;
+}
+
+#erro h4 {
+	color: #EF6644;
+}
+
+/*---------------------------------------------*/
+/*---------------------INFO--------------------*/
+/*---------------------------------------------*/
+
+#informacao .imagem-popup img {
+	background-color: #5596CF;
+}
+
+#informacao h4 {
+	color: #5596CF;
+}
+
+/*---------------------------------------------*/
+/*-----------------CONFIRMACAO-----------------*/
+/*---------------------------------------------*/
+
+#confirmacao .imagem-popup img {
+	background-color: #8BC34A;
+}
+
+#confirmacao h4 {
+	color: #8BC34A;
+}

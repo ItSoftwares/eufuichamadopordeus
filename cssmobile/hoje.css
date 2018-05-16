@@ -1,0 +1,413 @@
+* {
+    font-family: ubuntu;
+}
+
+#inicio, footer {
+    padding-top: 20px;
+    background-image: url(../../img/back-cadastro2.jpg);
+}
+
+section > h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.6em;
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto 30px;
+    z-index: 1;
+    cursor: default;
+    background: #efefef;
+}
+
+section > h2 span {
+    background: #efefef;
+    padding: 0 20px;
+}
+
+section > h2:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: rgba(0,0,0,.2);
+    left: 0;
+    margin: auto;
+    right: 0;
+    top: 50%;
+    z-index: -1;
+}
+
+body {
+    background: #efefef;
+}
+
+#nome > *:not(a) {
+    padding: 0 10px;
+    font-size: 3em;
+}
+
+#nome *:not(a) {
+    font-family: titulo;
+    font-weight: normal;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+}
+
+#nome h3:last-child {
+    font-size: 3em;
+    margin-top: 20px;
+}
+
+#hoje {
+    padding: 40px 0;
+/*    min-height: 54.2vh;*/
+    position: relative;
+}
+
+#semana {
+    display: flex;
+    justify-content: space-around;
+    /* align-items: center; */
+    width: 96%;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.dia {
+    width: 45%;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 2px;
+    background: rgba(0,0,0,.1);
+    transition: .3s ease;
+    box-sizing: border-box;
+    border-bottom: 2px solid transparent;
+    border-top: 2px solid transparent;
+    margin-bottom: 10px;
+}
+
+.dia.hoje, #semanal span.selecionado {
+    border-color: #5e5882;
+}
+
+.dia:hover, #semanal span:hover, .dia.hoje, #semanal span.selecionado {
+/*    background: rgba(0,0,0,.2);*/
+    background: #5e5882;
+    color: white;
+}
+
+.dia h4 {
+    font-weight: normal;
+}
+
+.dia img {
+    width: 100%;
+    display: block;
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+#formulario, #topo, #frases {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: rgba(0,0,0,.7);
+    justify-content: center;
+    align-items: center;
+}
+
+#formulario > img.fechar, #topo > img.fechar, #frases > img.fechar {
+    width: 25px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#formulario > div, #topo > div, #frases > div {
+    margin: 20px auto;
+    background: #fcfcfc;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    width: 96%;
+    overflow: hidden;
+    max-height: 84vh;
+}
+
+#formulario h3, #topo h3, #frases h3 {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    /* background: #CDDC39; */
+    background: #FFD275;
+    text-transform: uppercase;
+}
+
+#formulario form , #topo form, #frases form {
+    padding: 20px;
+    max-height: 80vh;
+    overflow: auto;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+}
+
+.input label {
+    color: #aaa;
+    font-size: .8em;
+}
+
+.input input, .input textarea {
+    padding: 10px;
+    border-radius: 2px;
+    margin: 10px 0 20px;
+    resize: none;
+    transition: .3s ease;
+    border: 1px solid #eee;
+    opacity: .7;
+    background: #eee;
+}
+
+.input textarea {
+    height: 100px;
+}
+
+.input #ver {
+    height: 100px;
+    text-align: justify;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    border: 1px solid #e9e9e9;
+    padding: 10px;
+    font-size: .8em;
+    color: #999;
+    border-radius: 3px;
+    font-family: encode;
+}
+
+.input input:focus, .input textarea:focus {
+    box-shadow: 0 0 3px rgba(0,0,0,.1);
+    opacity: 1;
+    background: white;
+}
+
+.upload {
+    display: flex;
+}
+
+.upload .nome {
+    border: 1px solid #e9e9e9;
+    padding: 10px;
+    font-size: .8em;
+    color: #999;
+    border-radius: 3px 0 0 3px;
+    width: 80%;
+    border-right: 0;
+    margin-bottom: 20px;
+    font-family: encode;
+    margin-top: 10px;
+}
+
+.upload label {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+/*    background: #4a5960;*/
+    background: #FFD275;
+    border-radius: 0 3px 3px 0;
+    margin-bottom: 20px;
+    color: black;
+    font-size: .8em;
+    cursor: pointer;
+    border-left: 2px solid rgba(0,0,0,.2);
+    margin-top: 10px;
+}
+
+.upload label img {
+    width: 20px;
+    margin-right: 10px;
+    filter: invert(1);
+}
+
+.upload input {
+    display: none;
+}
+
+#botoes {
+    position: absolute;
+    right: 0;
+    display: flex;
+}
+
+#botoes span {
+    padding: 2px 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 2px;
+    width: 15px;
+    display: block;
+    text-align: center;
+}
+
+#botoes span:hover {
+    background: rgba(0,0,0,.1);
+}
+
+#novo button {
+    float: right;
+}
+
+/*
+CONTEUDO
+*/
+
+#conteudo {
+    width: 96%;
+    margin: auto;
+    position: relative;
+    background: #efefef;
+} 
+
+#conteudo #editar {
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    width: 20px;
+    padding: 3px;
+    border-radius: 3px;
+    background: #F44336;
+    cursor: pointer;
+}
+
+#conteudo #imagem {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba(0,0,0,.35);
+}
+
+#conteudo > div#texto {
+    font-size: 1.1em;
+    text-align: justify;
+    margin-bottom: 30px;
+}
+
+#semanal {
+    display: flex;
+    justify-content: space-around;
+    width: 96%;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+#semanal span {
+    width: 45%;
+    padding: 5px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,.1);
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+    transition: .3s ease;
+    border-bottom: 2px solid transparent;
+    border-top: 2px solid transparent;
+    margin-bottom: 10px;
+}
+
+#baixar-pdf {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 3;
+    transition: .3s ease;
+    width: 50px;
+    box-shadow: 0 0 5px rgba(0,0,0,.75);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#baixar-pdf:active {
+    bottom: 5px;
+}
+
+#aviso-mostrar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+	transition: 1s ease;
+	filter: blur(30px);
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+#aviso-mostrar #logo-superior {
+	width: 300px;
+    margin: 20px 0;
+}
+
+#aviso-container {
+    font-size: 1.1em;
+    width: 96%;
+    padding: 10px;
+    border-radius: 3px;
+    background: #f9f9f9;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#aviso-mostrar .fechar {
+	position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 20px;
+	cursor: pointer;
+}
+
+#aviso-container h3 {
+	font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#aviso-container p {
+	margin-bottom: 30px;
+	text-align: center
+}
+
+#aviso-container a {
+	text-decoration: none;
+    display: table;
+    margin: 0 auto 30px;
+}
+
+#aviso-container div {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#aviso-container div img {
+	width: 32%;
+	border-radius: 2px;
+    box-shadow: 0px 0px 2px rgba(0,0,0,.5);
+}
+
+body.hidden {
+    overflow: hidden;
+}

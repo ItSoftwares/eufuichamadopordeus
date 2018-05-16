@@ -1,0 +1,190 @@
+* {
+    font-family: ubuntu;
+}
+
+@media (max-width: 1000px) {
+    #gerar img {
+        width: 50vw !important;
+    }
+    
+    #gerar #imprimir {
+        bottom: 10vw !important;
+    }
+    
+    #gerar #pdf {
+        bottom: 70vw !important;
+    }
+}
+
+@media screen {
+    body {
+        background: #4a4a4a;
+    }
+    
+    #gerar {
+        display: flex;
+        align-items: center;
+        flex-direction: column-reverse;
+    }
+    
+    #gerar #imprimir {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        z-index: 1;
+        transition: .3s ease;
+        width: 50px;
+        box-shadow: 0 0 5px rgba(0,0,0,.75);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    
+    #gerar #pdf {
+        position: fixed;
+        bottom: 80px;
+        right: 10px;
+        z-index: 1;
+        transition: .3s ease;
+        width: 50px;
+        box-shadow: 0 0 5px rgba(0,0,0,.75);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    
+    #gerar img.no {
+        opacity: .3;
+    }
+    
+    #gerar #imprimir:active {
+        bottom: 5px;
+    }
+    
+    #gerar #pdf:active {
+        bottom: 75px;
+    }
+
+    #certificado {
+        width: 29.7cm;
+        height: 21cm;
+        background: white;
+        margin: 20px auto;
+        box-shadow: 0 0 10px rgba(0,0,0,.75);
+        box-sizing: border-box;
+        border-radius: 3px;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    #certificado * {
+        
+    }
+    
+    #certificado img {
+        width: 100%;
+    }
+    
+    #nome {
+        position: absolute;
+        left: 0;
+        top: 9cm;
+        right: 0;
+        font-family: antiqua;
+        font-size: 2.3em;
+        width: 100%;
+        color: #012e62;
+        margin: auto;
+        text-align: center;
+    }
+    
+    #encontro {
+        position: absolute;
+        top: 10.25cm;
+        left: 10.6cm;
+        font-family: antiqua;
+        color: #012d61;
+        margin: auto;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+    
+    #data {
+        position: absolute;
+        top: 10.95cm;
+        left: 11.2cm;
+        font-family: antiqua;
+        font-weight: bold;
+        color: #012d61;
+        margin: auto;
+        font-size: 1.2em;
+        width: 6cm;
+        text-align: center;
+    }
+    
+    #data span, #final span {
+        text-transform: capitalize;
+        font-family: antiqua;
+    }
+    
+    #local {
+        position: absolute;
+        top: 11.65cm;
+        font-family: antiqua;
+        font-weight: bold;
+        color: #012d61;
+        margin: auto;
+        font-size: 1.2em;
+        width: 100%;
+        text-align: center;
+        text-transform: capitalize;
+    }
+    
+    #carga {
+        position: absolute;
+        top: 12.3cm;
+        font-family: antiqua;
+        font-weight: bold;
+        color: #012d61;
+        margin: auto;
+        font-size: 1.2em;
+        left: 17.5cm;
+        text-align: center;
+        text-transform: capitalize;
+    }
+    
+    #final {
+        position: absolute;
+        top: 14cm;
+        font-family: antiqua;
+        font-weight: bold;
+        color: #012d61;
+        margin: auto;
+        font-size: 1.2em;
+        left: 12.2cm;
+        text-align: center;
+    }
+    
+    canvas {
+        margin: 20px auto;
+        box-shadow: 0 0 10px rgba(0,0,0,.75);
+        display: block;
+        border-radius: 3px;
+    }
+}
+
+@media print {
+    html, body {
+        height:100%; 
+        margin: 0 !important; 
+        padding: 0 !important;
+        overflow: hidden;
+    }
+    @page {
+        margin: 0;
+        size: landscape;
+    }
+    
+    body *:not(canvas) {
+        display: none;
+    }
+}

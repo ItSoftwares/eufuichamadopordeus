@@ -1,0 +1,72 @@
+* {
+    font-family: ubuntu;
+}
+
+@media (min-width: 1000px) {
+    body {
+        background: #4a4a4a;
+    }
+    
+    #gerar {
+        width: 21cm;
+        background: white;
+        margin: 20px auto;
+        font-family: encode;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 3px;
+        box-shadow: 0 0 10px rgba(0,0,0,.75);
+    }
+
+    #folha {
+        width: 21cm;
+        height: 29.7cm;
+        background: white;
+        margin: 20px auto;
+        box-shadow: 0 0 10px rgba(0,0,0,.75);
+        font-family: encode; 
+        padding: 1.5cm 0.8cm;
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+ 
+    .etiqueta {
+        width: 3.6cm;
+        height: 2cm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-size: .9em;
+    }
+
+    .etiqueta p:first-child {
+        margin-bottom: 10px;
+    }
+    
+    .imprimir {
+        margin: auto;
+        display: block;
+    }
+}
+
+@media print {
+    html, body {
+        height:100%; 
+        margin: 0 !important; 
+        padding: 0 !important;
+        overflow: hidden;
+    }
+    @page {
+        margin: 0;
+    }
+    
+    body *:not(canvas) {
+        display: none;
+    }
+}

@@ -1,0 +1,264 @@
+body, html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+/*    background: url("../../img/back-login.jpg");*/
+    background: url("../../img/back-cadastro2.jpg");
+    background-size: cover;
+}
+
+* { 
+    font-family: encode;
+}
+
+#geral {
+    width: 100%;
+    height: 100%;
+    padding: 30px 0 0; 
+    background: rgba(36, 36, 62, 0.2);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+#geral h1 {
+    color: white;
+    font-family: titulo;
+    font-size: 7em;
+    font-weight: normal;
+    user-select: none;
+    cursor: default;
+    text-shadow: 2px 2px 2px rgba(0,0,0,.7);
+}
+
+#geral > div:not(#login) {
+    width: 96%;
+    margin: 0 auto 30px;
+    text-align: center;
+    user-select: none;
+    cursor: default;
+}
+
+#geral > div:not(#login) img {
+    filter: drop-shadow(1px 1px 0px black);
+}
+
+#geral div > p {
+    color: white;
+/*    opacity: .85;*/
+/*    border-top: 1px solid rgba(255, 255, 255, 0.36);*/
+    padding-top: 5px;
+    width: 100%;
+    font-size: .9em;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+}
+
+body > p {
+    font-size: .8em;
+    margin: 30px auto 0;
+    width: 90%;
+    text-align: center;
+    padding: 10px;
+    background: rgba(0,0,0,.5);
+    border-radius: 3px 3px 0 0;
+    box-sizing: border-box;
+}
+
+body > p a {
+    color: #c5c5c5;
+    text-decoration: none;
+    transition: .3s ease;
+}
+
+body > p a:hover {
+    text-decoration: underline;
+    color: #eee;
+}
+
+#login {
+    width: 96%;
+    margin: auto;
+    height: 400px;
+    display: flex;
+}
+
+#login > section {
+    width: 100%;
+    background: #fcfcfc;
+    border-radius: 2px;
+    border-left: 5px solid rgba(0,0,0,.1);
+    border-right: 5px solid rgba(0,0,0,.1);
+}
+
+#login > section h2 {
+    text-align: left;
+    margin: 25px auto 15px;
+    width: 80%;
+    color: #5e5882;
+}
+
+#login > section form {
+    width: 80%;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 62%;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input label {
+    color: #aaa;
+    font-size: .8em;
+}
+
+.input input {
+    padding: 10px;
+    border-radius: 2px;
+    margin: 10px 0 20px;
+    resize: none;
+    transition: .3s ease;
+    border: 1px solid #eee;
+    opacity: .7;
+    background: #eee;
+} 
+
+.input input:focus {
+/*    border-color: #8ef2ff;*/
+    box-shadow: 0 0 3px rgba(0,0,0,.1);
+    opacity: 1;
+    background: white;
+}
+
+#login > section a {
+    color: #006093;
+    text-decoration: none;
+    align-self: flex-end;
+    display: block;
+    font-size: .8em;
+    transition: .3s ease;
+}
+
+#login > section > a {
+    color: #ff5722;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+    width: 80%;
+    margin: 20px auto 0;
+}
+
+#login > section a:hover {
+    text-decoration: underline;
+}
+
+#login > section > a:hover {
+    color: #777
+}
+
+#login > section button {
+	width: 100%;
+    margin-top: 15px;
+}
+
+#linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#lembrar {
+    
+}
+
+#lembrar input {
+    display: none;
+}
+
+#lembrar label {
+    cursor: pointer;
+    display: flex;
+}
+
+#lembrar label div {
+    width: 10px;
+    margin-right: 8px;
+    padding: 3px;
+    background: #5e5882;
+    border-radius: 3px;
+    opacity: .5;
+    transition: .3s ease;
+}
+
+#lembrar input:checked + label div, #lembrar input:checked + label img {
+    opacity: 1;
+}
+
+#lembrar label img {
+    width: 100%;
+    display: block;
+    opacity: 0;
+    transition: .3s ease;
+}
+
+#lembrar label span {
+    color: #999;
+    text-align: center;
+    font-size: .8em;
+}
+
+#esqueceu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    display: none;;
+    justify-content: center;
+    align-items: center;
+}
+
+#esqueceu > div {
+    width: 96%;
+    max-width: 400px;
+    background: #fcfcfc;
+    padding: 10px;
+    border-radius: 2px;
+    position: relative;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+#esqueceu h3 {
+    
+}
+
+#esqueceu img {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    filter: invert(100);
+    width: 20px;
+    cursor: pointer;
+}
+
+#esqueceu .input {
+    margin: 15px 0 0;
+}
+
+#esqueceu button {
+	width: 30%;
+    margin-top: 15px;
+    float: right
+}

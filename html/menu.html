@@ -1,0 +1,33 @@
+<?
+// MENSAGENS ENVIADAS PELA SESSAO
+$info_msg = isset($_SESSION['info_msg'])?$_SESSION['info_msg']:"";
+$conf_msg = isset($_SESSION['conf_msg'])?$_SESSION['conf_msg']:"";
+$erro_msg = isset($_SESSION['erro_msg'])?$_SESSION['erro_msg']:"";
+// echo isset($_SESSION['info_msg'])?$_SESSION['info_msg']:"NOPS";
+unset($_SESSION['info_msg']);
+unset($_SESSION['conf_msg']);
+unset($_SESSION['erro_msg']);
+?>
+
+<header class="">
+   <div>
+       <!-- <a href="/"><h3>Eu Fui Chamado por Deus</h3></a> -->
+       <a href="/"><img src="../img/logo.png" alt=""></a>
+
+       <img src="../img/menu.png" id="menu-botao">
+
+       <nav>
+           <ul>
+               <li><a href="comunidades" class="<? echo $selec=='comunidades'?'selecionado':''; ?>">Comunidades</a></li>
+               <li><a href="hoje" class="<? echo $selec=='hoje'?'selecionado':''; ?>">Hoje</a></li>
+               <li><a href="sobre" class="<? echo $selec=='sobre'?'selecionado':''; ?>">Sobre</a></li>
+               <li><a href="encontro" class="<? echo $selec=='encontro'?'selecionado':''; ?>">Encontros</a></li>
+               <li><a href="agenda" class="<? echo $selec=='agenda'?'selecionado':''; ?>">Agenda</a></li>
+               <li><a href="fotos" class="<? echo $selec=='fotos'?'selecionado':''; ?>">Fotos</a></li>
+               <li><a href="contato" class="<? echo $selec=='contato'?'selecionado':''; ?>">Contato</a></li>
+               <li><a href="conta" class="<? echo $selec=='conta'?'selecionado':''; ?>">Conta</a></li>
+               <li><a href="../php/sair.php">Sair</a></li>
+           </ul>
+       </nav> 
+   </div> 
+</header>

@@ -1,0 +1,100 @@
+#confirmacao-tela {
+	position: fixed;
+	top: 0;
+	left: 0;
+	
+	background: rgba(94, 110, 141, 0.9);
+	width: 100%;
+	height: 100%;
+  
+	z-index: 40;
+	display: none;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1em;
+}
+
+#confirmacao-tela div {
+	position: relative;
+	
+	margin: 10% auto;
+	width: 400px;
+    max-width: 96%;
+	
+	box-shadow: 0 0 10px #272727;
+	border-radius: 5px;
+}
+
+#confirmacao-tela div img#confirmacao-fechar {
+	position: absolute;
+	right: 10px;
+	top: 5px;
+	
+	background: #424242;
+	border-radius: 10px;
+	
+	padding: 5px;
+	width: 15px;
+}
+
+#confirmacao-tela div img#confirmacao-logo {
+	position: absolute;
+	left: 10px;
+	top: 5px;
+	
+/*
+	background: #424242;
+	border-radius: 10px;
+*/
+	
+	padding: 5px;
+	width: 25px;
+}
+
+#confirmacao-tela div img:hover {
+	cursor: pointer;
+}
+
+#confirmacao-tela div p.confirmacao-mensagem {
+	padding: 10px;
+	height: 100px;
+	width: 400px;
+	
+	background: white;
+	border-radius: 5px 5px 0 0;
+	
+	color: #5E6E8D;
+	text-align: center;
+	
+	vertical-align: middle;
+	display: table-cell;
+}
+
+#confirmacao-tela div ul.confirmacao-botoes {
+	list-style: none;
+	display: flex;
+}
+
+.confirmacao-botoes li {
+	text-align: center;
+	width: 50%;
+	margin: 0;
+	padding: 15px;
+	color: white;
+	font-weight: bold;
+	text-shadow: 1px 1px 2px black;
+}
+
+.confirmacao-botoes li:hover {
+	cursor: pointer;
+}
+
+.confirmacao-botoes li#botao-sim {
+	background: #3299ff;
+	border-bottom-left-radius: 5px;
+}
+
+.confirmacao-botoes li#botao-nao {
+	background: #ccc;
+	border-bottom-right-radius: 5px;
+}

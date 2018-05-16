@@ -1,0 +1,224 @@
+* {
+    font-family: ubuntu;
+}
+
+#usuarios div::-webkit-scrollbar {
+    width: 14px;
+    height: 18px;
+}
+
+#usuarios div::-webkit-scrollbar-thumb {
+    height: 6px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+    border: 4px solid transparent;
+}
+
+#usuarios div::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: transparent;
+}
+
+#inicio {
+    padding-top: 20px;
+    background: url(../img/back-cadastro2.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0% 95%);
+    background-position: 0 -100px;
+}
+
+footer {
+    background-image: url(../img/back-cadastro2.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+
+#inicio .fundo, footer .fundo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+/*    background: radial-gradient(rgba(0, 0, 0, 0.28),rgba(0, 0, 0, 0.6));*/
+    background: radial-gradient(rgba(15, 12, 41, 0.1), rgba(48, 43, 99, 0.4), rgba(36, 36, 62, 0.6) 80%);
+    z-index: 1;
+}
+
+#inicio a {
+    text-transform: uppercase;
+    font-size: .9em;
+    color: white;
+    text-decoration: none;
+    transition: .3s ease;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: inline-table;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    background: rgb(22, 136, 206);
+}
+
+#nome {
+    padding: 80px 0;
+    text-align: center;
+    color: white;
+    z-index: 2;
+    position: relative;
+}
+
+#nome h1 {
+/*
+    font-family: saira extra condensed;
+    font-size: 5em;
+    margin-bottom: 30px;
+    color: white;
+*/
+    font-family: titulo;
+    font-size: 8em;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: normal;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+}
+
+section > h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.6em;
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto 30px;
+    z-index: 1
+}
+
+section > h2 span {
+    background: #efefef;
+    padding: 0 20px;
+}
+
+section > h2:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: rgba(0,0,0,.2);
+    left: 0;
+    margin: auto;
+    right: 0;
+    top: 50%;
+    z-index: -1;
+}
+
+body {
+    background: #efefef;
+}
+
+#usuarios {
+    padding: 40px 0;
+    min-height: 54.2vh;
+    position: relative;
+}
+
+#usuarios > div {
+    overflow-y: auto;
+    max-height: 500px;
+/*    min-height: 500px;*/
+    padding: 5px 0;
+}
+
+#usuarios h3 {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-weight: normal;
+    font-size: .9em;
+    padding: 5px;
+    background: #4CAF50;
+    border-radius: 2px;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+}
+
+table {
+    border-collapse: collapse;
+    min-width: 1000px;
+    width: 96%;
+    max-width: 1500px;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+    border-radius: 3px;
+    overflow: hidden;
+    cursor: default;
+    margin: auto;
+}
+
+table th {
+    font-weight: normal;
+}
+
+table tr:first-child {
+    border-bottom: 2px solid #efefef;
+}
+
+table td, table th {
+    background: #fff;
+    padding: 15px;
+    font-family: encode;
+    text-align: left;
+    font-size: .9em;
+}
+
+#apagar {
+    position: absolute;
+    right: 15px;
+    top: 0;
+    z-index: 1;
+}
+
+#paginas {
+    display: flex;
+    justify-content: center;
+}
+
+#paginas ul {
+    display: flex;
+    list-style: none;
+}
+
+#paginas li {
+    margin: 0 5px;
+    cursor: pointer;
+    transition: .3s ease;
+    font-weight: bold;
+    padding: 3px;
+    border-radius: 2px;
+}
+
+#paginas li[data-aberto="0"] {
+    display: none;
+}
+
+#paginas li[data-aberto="1"] {
+    display: block;
+}
+
+#paginas li.selecionado {
+    background: #5e5882;
+    color: white;
+}
+
+#paginas li[data-aberto="1"]:first-child {
+    margin-right: 20px;
+}
+
+#paginas li[data-aberto="1"]:last-child {
+    margin-left: 20px;
+}

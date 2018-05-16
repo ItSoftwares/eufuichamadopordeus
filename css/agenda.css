@@ -1,0 +1,1037 @@
+* {
+    font-family: ubuntu;
+}
+
+body.hidden {
+    overflow: hidden;
+}
+
+#inicio {
+    padding-top: 20px;
+    background: url(../img/back-agenda.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0% 95%);
+    background-position: 0 -150px;
+}
+
+footer {
+    background-image: url(../img/back-agenda.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+
+#inicio .fundo, footer .fundo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(rgba(15, 12, 41, 0.1), rgba(48, 43, 99, 0.4), rgba(36, 36, 62, 0.6) 80%);
+    z-index: 1;
+}
+
+#nome {
+    padding: 30px 0 80px;
+    text-align: center;
+    color: white;
+    z-index: 2;
+    position: relative;
+}
+
+#nome h1 {
+    font-family: titulo;
+    font-size: 8em;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: normal;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+}
+
+#video {
+    z-index: 1;
+    position: relative;
+    margin: -100px auto 0px;
+    display: table;
+    padding-bottom: 40px;
+}
+
+#video iframe {
+    width: 49.8vw;
+    min-width: 500px;
+    height: 28vw;
+    padding: 3px;
+    background: rgba(0, 0, 0, 0.44);
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+}
+
+section h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.6em;
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto 30px;
+    z-index: 1
+}
+
+section h2 span {
+    background: white;
+    padding: 0 20px;
+}
+
+section h2:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: rgba(0,0,0,.2);
+    left: 0;
+    margin: auto;
+    right: 0;
+    top: 50%;
+    z-index: -1;
+}
+
+#encontros {
+    width: 1000px;
+    margin: auto;
+    padding: 40px 0;
+    min-height: 54.2vh;
+    position: relative;
+}
+
+.encontro {
+    border-top: 1px solid rgba(0,0,0,.3);
+    padding: 12px 0;
+    position: relative;
+}
+
+.encontro.participante:before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 0;
+    bottom: 0;
+    height: 0px;
+    width: 0px;
+    border: 5px solid transparent;
+    border-left-color: rgba(0,0,0,.5);
+    margin: auto;
+}
+
+.encontro.participante h3 {
+    font-weight: normal;
+    width: 30%;
+}
+
+.encontro.participante section > div {
+    width: 300px;
+    text-align: right;
+}
+
+.encontro:last-child {
+    border-bottom: 1px solid rgba(0,0,0,.3);
+}
+
+.encontro section {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.encontro.participante section {
+    align-items: center;
+}
+
+table {
+    border-collapse: collapse;
+    display: none;
+    width: 100%;
+    max-width: 1500px;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+    border-radius: 3px;
+    overflow: hidden;
+    cursor: default;
+    margin: 20px auto 0;
+}
+
+table th {
+/*    font-weight: bold;*/
+}
+
+table tr:first-child {
+    border-bottom: 2px solid #efefef;
+}
+ 
+table td, table th {
+    background: #fff;
+    padding: 15px;
+    font-family: encode;
+    text-align: center;
+    font-size: .9em;
+}
+
+.dados {
+    
+}
+
+.dados span {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.inscritos {
+    position: absolute;
+    right: 0px;
+    top: 65px;
+    cursor: pointer;
+}
+
+.botao.editar, .botao.info, .botao.encerrar {
+    background: #4CAF50;
+} 
+
+.botao.reeditar, .botao.exibir, .botao.presenca {
+    background: #1688ce;
+}
+
+.botao.excluir, .botao.cancelar, .botao.cancelado {
+    background: #ff5722;
+}
+
+#novo, #agendar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: rgba(0,0,0,.7);
+    display: none;
+    justify-content: center;
+    align-items: baseline;
+    overflow-y: auto;
+}
+
+#agendar {
+/*    align-items: center;*/
+}
+
+img.fechar {
+    width: 25px;
+    position: fixed;
+    top: 10px;
+    right: 25px;
+    cursor: pointer;
+}
+
+#novo > div, #agendar > div {
+    margin: 20px auto;
+    background: #fcfcfc;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    width: 800px;
+    overflow: hidden;
+    position: relative;
+}
+
+#novo hr {
+    border-bottom: 1px solid rgba(0,0,0,.15);
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#novo h3, #agendar h3 {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    /* background: #CDDC39; */
+    background: #03A9F4;
+    position: relative;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+} 
+
+#novo form, #agendar #container {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+#agendar #container {
+	min-height: 62vh;
+}
+
+#container > * {
+    width: 49%;
+}
+
+#container ul {
+    list-style: none;
+}
+
+#container ul li {
+    margin-bottom: 12px;
+    text-align: justify;
+}
+
+#container ul li span {
+    margin-left: 8px;
+}
+
+#container ul li#observacao span {
+	color: #F44336;
+}
+
+#container > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center
+}
+
+#abrir-pagamento {
+    background: linear-gradient(to bottom, #72B937, #259c2e);
+    padding: 3px;
+    padding-left: 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#abrir-pagamento img {
+    width: 150px;
+    margin-left: 20px;
+    background: linear-gradient(to bottom, #ffffff, #eaeaea);
+    border-radius: 2px;
+    padding: 3px 6px;
+}
+
+#container > div > p {
+    font-weight: bold;
+}
+
+#calendario {
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+    box-shadow: 0 0 5px rgba(0,0,0,.15);
+    padding-bottom: 5px;
+    border-radius: 3px;
+}
+
+#calendario header {
+    background: #2d3e4e;    
+    border-radius: 3px 3px 0 0;
+    padding: 13px 0;
+    position: relative;
+    cursor: default;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#calendario #mes {
+    color: white;
+    margin-right: 8px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#calendario #ano {
+    font-size: 1em;
+    text-align: center;
+    color: white;
+}
+
+#calendario #nome-semana {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    cursor: default;
+}
+
+#nome-semana span {
+    
+}
+
+.semana {
+    display: flex;
+    justify-content: space-around;
+    padding: 3px;
+}
+
+.semana:not(:last-child) {
+/*    border-bottom: 1px solid #e9e9e9;*/
+}
+
+.semana span {
+    padding: 4px 0;
+    text-align: center;
+    width: calc(100% / 9);
+    transition: .3s ease;
+    border-radius: 4px;
+    position: relative;
+}
+
+.semana span[data-nada="0"] {
+    background: #fcfcfc;
+    cursor: pointer;
+}
+
+.semana span[data-nada="0"]:hover {
+    background: #2d3e4e;
+    color: white;
+}
+
+.semana span.hoje {
+    background: #3e97eb !important;
+    color: white;
+} 
+
+#agendar #como {
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    box-sizing: border-box;
+    align-items: flex-start;
+    text-align: justify;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+#agendar #como p {
+    width: 50%;
+    margin-right: 11%;
+}
+
+#agendar #como img {
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,.15);
+    width: 30%
+}
+
+#agendar #mensagem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    padding: 20px;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(0,0,0,.15);
+}
+
+#agendar #mensagem > * {
+    width: 30%;
+    text-align: justify;
+}
+
+#agendar #mensagem img {
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,.15);
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input.metade {
+    width: 49%;
+}
+
+.input label {
+    color: #aaa;
+    font-size: .8em;
+}
+
+.input input, .input textarea {
+    padding: 10px;
+    border-radius: 2px;
+    margin: 10px 0 20px;
+    resize: none;
+    transition: .3s ease;
+    border: 1px solid #eee;
+    opacity: .7;
+    background: #eee;
+}
+
+.input input:focus, .input textarea:focus {
+    box-shadow: 0 0 3px rgba(0,0,0,.1);
+    opacity: 1;
+    background: white;
+    resize: none;
+}
+
+.input textarea {
+    height: 100px;    
+}
+
+.upload {
+    display: flex;
+}
+
+.upload .nome {
+    border: 1px solid #e9e9e9;
+    padding: 10px;
+    font-size: .8em;
+    color: #999;
+    border-radius: 3px 0 0 3px;
+    width: 80%;
+    border-right: 0;
+    margin-bottom: 20px;
+    font-family: encode;
+    margin-top: 10px;
+}
+
+.upload label {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+/*    background: #4a5960;*/
+    background: #FFD275; 
+    border-radius: 0 3px 3px 0;
+    margin-bottom: 20px;
+    color: black;
+    font-size: .8em;
+    cursor: pointer;
+    border-left: 2px solid rgba(0,0,0,.2);
+    margin-top: 10px;
+    width: 20%;
+    justify-content: center;
+}
+
+.upload label img {
+    width: 20px;
+    margin-right: 10px;
+    filter: invert(1);
+}
+
+.upload input {
+    display: none;
+}
+
+#novo button {
+    float: right;
+}
+
+#forma-pagamento > h3 {
+    margin-bottom: 15px;
+}
+
+#fundo-pagar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#fundo-pagar > div {
+    width: 800px;
+    background: white;
+    padding: 20px;
+    border-radius: 3px;
+    position: relative;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+#forma-pagamento {
+	margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+#forma-pagamento input {
+    display: none;
+}
+
+#forma-pagamento label {
+    text-transform: capitalize;
+    box-shadow: inset 0 -3px 0 #e9e9e9;
+    padding: 10px;
+    display: inline-block;
+    cursor: pointer;
+    transition: .5s ease;
+    margin-right: 10px;
+    font-weight: bold;
+    color: #777;
+}
+
+#forma-pagamento input:checked + label {
+	box-shadow: inset 0 -40px 0 #65c288;
+    color: white;
+    text-shadow: 1px 1px 2px #424242;
+}
+
+#logo-pagseguro {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    width: 100px;
+} 
+
+#tipo {
+    float: right;
+    background: #f4b35a;
+    border-radius: 3px;
+    transition: 1s ease;
+}
+
+#tipo img {
+    width: 30px;
+    padding: 5px 10px;
+    display: block;
+}
+
+#pagar-cartao, #pagar-boleto, #info-compra {
+    width: 100%;
+    min-height: 10vh;
+    background: white;
+/*    margin-bottom: 30px;*/
+    border: 1px solid #e9e9e9;
+    border-radius: 2px;
+}
+
+#fundo-pagar h4 {
+        PADDING: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    background: #2980b9;
+    border-radius: 3px 3px 0 0;
+    color: white;
+    text-shadow: 1px 1px 2px #424242;
+}
+
+#pagar-cartao, #pagar-boleto {
+    display: none;
+}
+
+#pagar-cartao form {
+    width: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#pagar-boleto form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+#titular {
+    text-transform: uppercase;
+}
+
+#brand {
+    position: absolute;
+    right: 10%;
+    top: 10%;
+    font-size: 1em;
+    font-weight: bold;
+    color: #fcfcfc;
+    text-shadow: 1px 1px 2px #424242;
+    padding: 3px;
+}
+
+.container form > button, #confirmar button {
+    width: 155px;
+    padding: 12px 10px;
+    float: right;
+    background: #8bc34a;
+    cursor: pointer;
+    font-size: .9em;
+    transition: .3s ease;
+    color: white;
+    border-radius: 3px;
+    box-shadow: inset 0 -2px 0 rgba(6,6,6,.3);
+    text-shadow: 1px 1px 2px #424242;
+    font-family: encode;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#pagar-boleto .container form button {
+	float: none;
+}
+
+#pagar-cartao #cartao-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    width: 50%;
+}
+
+#cartao-credito {
+    width: 55vh;
+    height: 250px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: 1s ease;
+}
+
+#cartao-container:hover #cartao-credito {
+/*    transform: rotateY(180deg);*/
+}
+
+#confirmar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(rgba(0,0,0,.5),rgba(0,0,0,.8));
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+#confirmar > img {
+    position: fixed;
+    top: 10px;
+    right: 15px;
+    width: 18px;
+    padding: 5px;
+    border-radius: 2px;
+    background: rgba(0,0,0,.3);
+    cursor: pointer;
+}
+
+#confirmar > div {
+    width: 450px;
+    /* height: 96vh; */
+    position: relative;
+    background: #fcfcfc;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+#confirmar h3 {
+    padding: 10px 18px;
+    background: rgb(22, 136, 206);
+    color: white;
+    margin-bottom: 10px;
+}
+
+#confirmar .input {
+    padding: 0 10px;
+    position: relative;
+    box-sizing: border-box;
+    display: inline-flex;
+}
+
+#confirmar button {
+    margin: 0 10px 10px;
+}
+
+.cartao {
+    background-color: #f4b35a;
+    border-radius: 4px;
+    /* border: 2px solid rgba(0,0,0,.1); */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    font-family: encode;
+    background-image: linear-gradient(-35deg,rgba(0, 0, 0, 0.3), transparent);
+    backface-visibility: hidden;
+}
+
+.frente #chip {
+    background: #ddd;
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 70px;
+    height: 50px;
+    border-radius: 4px;
+    padding: 10px 15px 10px 0;
+    box-sizing: border-box;
+}
+
+.frente #chip span {
+        width: 100%;
+    height: 100%;
+    display: block;
+    background: rgba(255,255,255,.5);
+    border-radius: 0 4px 4px 0;
+}
+
+#bandeira {
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    width: 70px;
+}
+
+#bandeira img {
+    width: 100%;
+    opacity: 0;
+}
+
+.numero-cartao {
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #fcfcfc;
+    text-shadow: 1px 1px 2px #424242;
+    padding: 3px;
+}
+
+.cartao * {
+    transition: .3s ease;
+}
+
+.cartao .marcado {
+    background: #f4b35a;
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+}
+
+#pagar-cartao .nome {
+    position: absolute;
+    left: 10%;
+    bottom: 10%;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fcfcfc;
+    text-shadow: 1px 1px 2px #424242;
+    padding: 3px;
+} 
+
+.validade {
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+    font-size: 1em;
+    font-weight: bold;
+    color: #fcfcfc;
+    text-shadow: 1px 1px 2px #424242;
+    padding: 3px;
+}
+
+.verso {
+    transform: rotateY(180deg);
+}
+
+.verso .fita {
+    width: 100%;
+    height: 20%;
+    background: #424242;
+    position: absolute;
+    top: 10%;
+}
+
+.verso .faixa {
+    width: 53%;
+    height: 10%;
+    background: #fcfcfc;
+    left: 2%;
+    bottom: 45%;
+    position: absolute;
+}
+
+.verso .cvc {
+    position: absolute;
+    left: 60%;
+    bottom: 46%;
+    font-weight: bold;
+    color: #fcfcfc;
+    text-shadow: 1px 1px 2px #424242;
+    padding: 3px;
+}
+
+#comprovante {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    background: rgba(0,0,0,.7);
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#comprovante .fechar {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 25px;
+    cursor: pointer;
+    display: none;
+}
+
+#comprovante .loading {
+    width: 100px;
+    filter: invert(1);
+}
+
+#comprovante > div {
+    width: 400px;
+    padding: 10px;
+    border-radius: 3px;
+    background: white;
+    display: none;
+}
+
+#comprovante h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px 0;
+    background: #5596cf;
+    border-radius: 3px;
+    color: white;
+}
+
+#comprovante h5 {
+    color: #999;
+    text-align: center;
+    margin: 20px 0;
+}
+
+#comprovante .descricao {
+    margin-bottom: 20px;
+    font-size: .9em;
+    text-align: center;
+}
+
+#comprovante h3 {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    margin-bottom: 40px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+#comprovante .codigo {
+    margin: 20px 0;
+    text-align: center;
+    font-size: .8em;
+}
+
+#comprovante .valor {
+    border-radius: 3px;
+    color: #5596cf;
+}
+
+#cancelar, #video-link {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: none; 
+    justify-content: center;
+    align-items: center;
+}
+
+#cancelar > div, #video-link > div {
+    margin: 20px auto;
+    background: #fcfcfc;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    width: 500px;
+    overflow: hidden;
+    position: relative;
+}
+
+#cancelar h3, #video-link h3 {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    background: #FFD275;
+    text-transform: uppercase;
+}
+
+#cancelar form, #video-link form {
+    padding: 20px;
+}
+
+#cancelar button, #video-link button {
+    float: right;
+}
+
+#cancelar p {
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: justify;
+    min-height: 20vh;
+}
+
+#exibir.botao {
+    margin-bottom: 15px;
+}
+
+#erro-pag, #quero-ir {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+/*    font-weight: bold;*/
+    padding: 20px;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(0,0,0,.15);
+}
+
+#erro-pag  p {
+    color: #F44336;
+}
+
+#quero-ir  p {
+    color: #ecd400;
+}
+ 
+#erro-pag p, #quero-ir  p {
+    width: 50%;
+    text-align: justify;
+/*    font-size: 1.1em;*/
+    font-weight: bold;
+}
+
+#erro-pag button, #quero-ir  button {
+    width: 304px;
+    border: 1px solid rgba(0,0,0,.1);
+    margin-right: 35px;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 16px;
+}
+
+button.vermelho {
+    background: #F44336;
+}
+
+button.amarelo {
+    background: #FFEB3B;
+    color: black;
+}

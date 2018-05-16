@@ -1,0 +1,40 @@
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109768896-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-109768896-1');
+    </script>
+</head>
+   
+
+<footer>
+    <div class="fundo"></div>
+    <div>
+       <a href="#" onclick="window.open('https://www.sitelock.com/verify.php?site=eufuichamadopordeus.com.br','SiteLock','width=600,height=600,left=160,top=170');" id='sitelock'><img class="img-responsive" alt="SiteLock" title="SiteLock" src="//shield.sitelock.com/shield/eufuichamadopordeus.com.br" /></a>
+<!--       <p>Eu Fui Chamado Por Deus</p>-->
+       <div class="fb-like" data-href="https://business.facebook.com/eufuichamadopordeus.com.br&quot;" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+       <div id="redes-sociais">
+           <a href="https://www.facebook.com/eufuichamadopordeus.org" target="_blank"><img src="https://<? echo $_SERVER['SERVER_NAME'] ?>/img/facebook.png" alt=""></a>
+           <a href="https://www.instagram.com/eufuichamadopordeus/" target="_blank"><img src="https://<? echo $_SERVER['SERVER_NAME'] ?>/img/instagram.png" alt=""></a>
+       </div>
+    </div>
+    
+</footer>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.12&appId=172758199922&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript">
+	<? if ($info_msg!="") {?> chamarPopupInfo("<? echo $info_msg; ?>"); console.log("<? echo $info_msg ?>"); <?}?>;
+    <? if ($conf_msg!="") {?> chamarPopupConf("<? echo $conf_msg; ?>"); console.log("<? echo $conf_msg ?>"); <?}?>;
+    <? if ($erro_msg!="") {?> chamarPopupErro("<? echo $erro_msg; ?>"); console.log("<? echo $erro_msg ?>"); <?}?>;
+</script>

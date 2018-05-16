@@ -1,0 +1,46 @@
+ErrorDocument 404 /ktprime/paginas/error_404.php
+
+RewriteEngine On
+#RewriteBase /
+
+RewriteCond %{SERVER_PORT} 80 
+RewriteCond %{REQUEST_URI} !^/php/pagseguro/notificacao.php$ [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+
+# Go to http if you are on room.html
+RewriteCond %{SERVER_PORT} !80 
+RewriteCond %{REQUEST_URI} ^/php/pagseguro/notificacao.php$ [NC]
+RewriteRule ^(.*)$ http://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+
+
+#RewriteCond %{HTTPS} off
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L]
+
+RewriteCond %{REQUEST_URI} ^/404/$
+RewriteRule ^(.*)$ <YourRelativePathToPHPFile>/404.php [L]
+
+##ErrorDocument 404 /anuncio/404.php
+RewriteRule ^cadastro?$ cadastro.php
+RewriteRule ^paginas/fotos?$ paginas/fotos.php
+RewriteRule ^paginas/encontros?$ paginas/encontros.php
+RewriteRule ^paginas/contato?$ paginas/convite.php
+RewriteRule ^paginas/conta?$ paginas/conta.php
+RewriteRule ^paginas/certificado?$ paginas/certificado.php
+RewriteRule ^paginas/sobre?$ paginas/sobre.php
+RewriteRule ^paginas/hoje?$ paginas/hoje.php 
+#RewriteRule ^paginas/comunidades?$ paginas/comunidades.php 
+RewriteRule ^paginas/comunidades/([^/-]*)/([^/-]*)$ paginas/comunidades.php?area_atuacao=$1&atua_como=$2
+RewriteRule ^paginas/comunidades?$ paginas/comunidades.php
+RewriteRule ^paginas/participante/([^/-]*)$ paginas/participante.php?id=$1
+RewriteRule ^paginas/conteudo?$ paginas/conteudo.php 
+RewriteRule ^paginas/agenda?$ paginas/agenda.php 
+
+RewriteRule ^adm/participantes?$ adm/index.php
+RewriteRule ^adm/hoje?$ adm/hoje.php
+RewriteRule ^adm/fotos?$ adm/fotos.php
+RewriteRule ^adm/sobre?$ adm/sobre.php
+RewriteRule ^adm/convite?$ adm/convite.php
+RewriteRule ^adm/gerar?$ adm/gerar.php
+RewriteRule ^adm/encontros?$ adm/encontros.php
+RewriteRule ^adm/agenda?$ adm/agenda.php
+RewriteRule ^adm/pin?$ adm/pin.php

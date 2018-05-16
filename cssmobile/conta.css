@@ -1,0 +1,167 @@
+* {
+    font-family: ubuntu;
+} 
+
+footer, #inicio {
+    background-image: url(../../img/back-conta.jpg);
+}
+
+section h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    position: relative;
+    max-width: 1000px;
+    width: 96%;
+    margin: 0 auto 30px;
+    z-index: 1
+}
+
+section h3 {
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+    margin: 20px auto 50px;
+    z-index: 1
+}
+
+section h2 span {
+    background: white;
+    padding: 0 20px;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+section h2 span img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+section h2:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: rgba(0,0,0,.2);
+    left: 0;
+    margin: auto;
+    right: 0;
+    top: 50%;
+    z-index: -1;
+}
+
+#conta {
+    padding: 40px 0 0;
+    min-height: 54.2vh;
+}
+
+#conta h4 {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    color: red;
+}
+
+#conta form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px;
+    border-left: 1px solid #f7f7f7;
+    border-right: 1px solid #f7f7f7;
+    box-sizing: border-box;
+}
+
+#conta > div {
+    width: 100%;
+    margin: auto;
+    padding: 20px 0;
+}
+
+#conta .input {
+    display: flex;
+    flex-direction: column; 
+    width: 98%;
+}
+
+#conta .input.metade {
+    width: 48%;
+}
+
+#conta .input > label {
+    font-size: .8em;
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+#conta .input > label span {
+    color: #FF5722;
+    /* font-weight: normal; */
+    font-size: .9em;
+    margin-left: 10px;
+}
+
+#conta .input *:disabled {
+    opacity: .5;
+}
+
+#conta .input input, #conta .input textarea, #conta .input select {
+    padding: 10px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    resize: none;
+    transition: .3s ease;
+    border: 1px solid #eee;
+    opacity: .7;
+    background: #eee;
+}
+
+#conta .input textarea {
+    height: 80px;
+}
+
+#conta .input input:focus, #conta .input textarea:focus, #conta .input select:focus {
+/*    border-color: #60d3e2;*/
+    box-shadow: 0 0 3px rgba(0,0,0,.1);
+    opacity: 1;
+    background: white;
+}
+
+#conta .botao {
+/*    float: right;*/
+    align-self: center;
+}
+
+#conta ul {
+    list-style: none;
+    width: 96%;
+    margin: auto;
+}
+
+.certificado a {
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    padding-bottom: 10px;
+}
+
+.certificado a img {
+    width: 15px;
+    margin-left: 10px;
+}
+
+#conta p.mensagem {
+    text-align: center;
+    margin-bottom: 20px;
+    color: red;
+    font-size: .9em;
+    cursor: default;
+}

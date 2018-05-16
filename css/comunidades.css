@@ -1,0 +1,526 @@
+* {
+    font-family: ubuntu;
+}
+
+body {
+	background: #f9f9f9;
+}
+
+#inicio, footer {
+    background-image: url(../img/back-conta.jpg);
+}
+
+#inicio nav {
+	z-index: 2;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    width: 500px;
+}
+
+#inicio input, #inicio select {
+	margin-bottom: 5px;
+}
+
+#inicio input {
+	text-align: center;
+    opacity: .7;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#comunidades {
+	width: 100%;
+	max-width: 1300px;
+	margin: 40px auto;
+	display: flex;
+	padding: 0 15px;
+	box-sizing: border-box;
+	flex-direction: row-reverse;
+	min-height: 80vh;
+}
+
+h2.titulo span {
+    font-size: .9em;
+    background: #f9f9f9;
+}
+
+h2.titulo:before {
+	content: none;
+}
+
+aside {
+	width: 25%;
+	max-width: 500px;
+	margin-left: 15px;
+	padding-left: 15px;
+	border-left: 1px dashed #ccc;
+}
+
+aside h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: normal;
+    color: #666;
+}
+
+aside ul {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+aside li {
+    width: 30%;
+    background: #b8b8b8;
+    border-radius: 3px;
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+aside li a {
+	display: block;
+}
+
+aside li a img {
+	width: 100%;
+	display: block;
+}
+
+article {
+	width: 75%;
+	/*max-width: 700px;*/
+	position: relative;;
+}
+
+article#postagens h4#qtd {
+    font-weight: normal;
+    font-style: italic;
+    position: absolute;
+    display: none;
+}
+
+article#postagens ul {
+	list-style: none;
+}
+
+li.postagem {
+	margin-bottom: 10px;
+    padding-bottom: 10px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	flex-direction: row-reverse;
+}
+
+li.postagem:not(:last-child) {
+	/*border-bottom: 1px solid rgba(0,0,0,.1);*/
+}
+
+li.postagem:not(.sub) {
+    padding: 15px;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    margin-bottom: 20px;
+    background: white;
+    position: relative;
+}
+
+li.postagem .resumo {
+	width: 87%;
+	text-decoration: none;
+	color: black;
+}
+
+li.postagem .resumo h3 {
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+
+li.postagem .resumo h3 span {
+	font-size: .7em;
+    opacity: .5;
+    margin-left: 5px;
+}
+
+li.postagem .resumo h3:hover {
+	text-decoration: underline;
+}
+
+li.postagem .resumo p {
+	font-size: .9em;
+	color: #666;
+	text-align: justify;
+	cursor: default;
+}
+
+li.postagem .criador {
+    width: 11%;
+    display: flex;
+    /*align-items: center;*/
+    color: black;
+    text-decoration: none;
+    flex-direction: column;
+}
+
+li.postagem .criador img {
+	background: #b8b8b8;
+    border-radius: 50%;
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+    width: 100%;
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+li.postagem .criador div {
+	font-size: .9em;
+    color: #5e5882;
+	text-align: center;
+}
+
+li.postagem .criador p {
+    font-size: .9em;
+    margin-top: 3px;
+    color: #666;
+    font-style: italic;
+}
+
+li.postagem .menu {
+	position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+li.postagem .menu img {
+	opacity: .3;
+    filter: invert(1);
+    width: 20px;
+    transition: .3s ease;
+}
+
+li.postagem .menu img:hover {
+	opacity: 1;
+	cursor: pointer;
+}
+
+li.postagem .menu div {
+	position: absolute;
+    right: 150%;
+    top: 0;
+    background: white;
+    box-shadow: 0 0 3px rgba(0,0,0,.2);
+    border-radius: 2px;
+    overflow: hidden;
+    display: none;
+}
+
+li.postagem .menu div span {
+	width: 100%;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+li.postagem .menu div span:hover {
+    background: #5e5882;
+    color: white;
+}
+
+li.postagem .menu div span.editar {
+	border-bottom: 1px solid rgba(0,0,0,.1)
+}
+
+li.postagem ul {
+	padding-left: 40px;
+	margin-top: 10px;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+li.postagem.fechada ul {
+	display: none;
+}
+
+li.postagem.sub {
+	border-bottom: none;
+	margin-bottom: 0;
+	position: relative;
+	padding-left: 25px;
+	padding-top: 10px;
+}
+
+li.postagem.sub:before {
+	content: "";
+	width: 0;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-left: 2px solid rgb(94, 88, 130);
+}
+
+li.postagem.sub .criador {
+	width: 8%;
+}
+
+li.postagem.sub .resumo {
+    font-size: .9em;
+    width: 90%;
+}
+
+li.postagem.sub h4 {
+	margin-bottom: 8px;
+	cursor: default;
+    color: #5e5882;
+}
+
+li.postagem.sub h4 span {
+	font-size: .8em;
+	opacity: .7;
+	margin-left: 8px;
+}
+
+li.postagem.sub .criador img {
+	width: 90%;
+	max-width: 80px;
+	margin-bottom: 0;
+}
+
+li.postagem .resposta {
+	margin-top: 10px;
+    display: flex;
+    align-items: flex-start;
+    /*justify-content: space-between;*/
+}
+
+li.postagem .resposta .input {
+    width: 82%;
+}
+
+li.postagem .resposta textarea {
+    margin-bottom: 0;
+}
+
+li.postagem .resposta button {
+    margin-left: 20px;
+}
+
+button#nova {
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	box-shadow: 0 0 5px rgba(0,0,0,.3);
+	z-index: 3;
+}
+
+button#inbox {
+	position: fixed;
+	left: 10px;
+	bottom: 10px;
+	box-shadow: 0 0 5px rgba(0,0,0,.3);
+	z-index: 3;
+}
+
+#nova-postagem > div {
+	width: 450px !important;
+}
+
+#nova-postagem form {
+	padding: 20px 20px 0;
+}
+
+#nova-postagem .input {
+	width: 100%;
+}
+
+#nova-postagem textarea {
+	resize: vertical;
+	max-height: 300px;
+}
+
+#nova-postagem .botao {
+	float: right;
+}
+
+/* PARTE DO PARTICIPANTE */
+article#participante {
+	display: none;
+}
+
+*[data-esconder='1'] {
+	display: none;
+}
+
+#perfil {
+	width: 500px;
+    margin: auto;
+}
+
+.card {
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    padding: 20px 15px;
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.card .entalhe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 160px;
+    height: 100%;
+    background: #5e5882;
+    z-index: 1;
+    clip-path: polygon(0 0, 20% 0, 100% 100%, 0 100%);
+}
+
+.card img {
+    width: 90px;
+    border-radius: 3px;
+    position: relative;
+    z-index: 2;
+}
+
+.card div.detalhes {
+    margin-left: 20px;
+}
+
+.card div h2 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.card div p {
+	font-style: italic;
+    opacity: .7;
+}
+
+#informacoes {
+	flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#informacoes .metade {
+	width: 49% !important;
+}
+
+#participante form .input {
+	width: 100%;
+}
+
+#participante button:not(.voltar) {
+	float: right;
+}
+
+.voltar {
+	float: left;
+    background: none;
+    color: black;
+    font-style: italic;
+    padding: 0 10px 5px;
+    border-bottom: 2px solid rgba(0,0,0,.1);
+    border-radius: 0;
+    margin-bottom: 10px;
+}
+
+.aviso {
+	min-width: 100px;
+	display: table;
+	margin: auto;
+	padding: 10px;
+	border-radius: 3px;
+	color: white;
+	font-size: .9em;
+	background: rgba(0,0,0,.5);
+	text-align: center;
+}
+
+/* PARTE DAS MENSAGENS */
+#mensagens {
+	display: none;
+}
+
+#mensagens ul {
+	list-style: none;
+}
+
+.mensagem {
+    background: white;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    border-radius: 3px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.mensagem > a {
+	display: flex;
+    align-items: flex-start;
+}
+
+.mensagem > a:nth-child(2) {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(0,0,0,.2);
+    flex-direction: row-reverse;
+}
+
+.mensagem > a:nth-child(2) h4 {
+	text-align: right;
+}
+
+.mensagem img {
+	width: 60px;
+    background: #b8b8b8;
+    border-radius: 3px;
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+    cursor: pointer;
+}
+
+.mensagem a div {
+    padding: 0 10px;
+}
+
+.mensagem h4 {
+	margin-bottom: 5px;
+	cursor: default;
+    color: #5e5882;
+    font-size: .9em;
+}
+
+.mensagem p {
+	font-size: .9em;
+    text-align: justify;
+}
+
+.mensagem form {
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.mensagem .input {
+    width: 87%;
+    margin-right: 10px;
+}
+
+.mensagem .input input {
+	margin-bottom: 0;
+}
+
+.mensagem button {
+    /*margin-top: 10px;*/
+    /*background: #eee;*/
+    /*color: black;*/
+    padding: 10px;
+}

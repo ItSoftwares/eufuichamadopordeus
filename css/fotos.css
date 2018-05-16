@@ -1,0 +1,374 @@
+* {
+    font-family: ubuntu;
+}
+
+#inicio {
+    padding-top: 20px;
+    background: url(../img/encerramento.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0% 95%);
+}
+
+footer {
+    background-image: url(../img/encerramento.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+
+#inicio .fundo, footer .fundo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+/*    background: radial-gradient(rgba(0, 0, 0, 0.28),rgba(0, 0, 0, 0.6));*/
+    background: radial-gradient(rgba(15, 12, 41, 0.1), rgba(48, 43, 99, 0.4), rgba(36, 36, 62, 0.6) 80%);
+    z-index: 1;
+}
+
+#nome {
+    padding: 80px 0;
+    text-align: center;
+    color: white;
+    z-index: 2;
+    position: relative;
+}
+
+#nome h1 {
+/*
+    font-family: saira extra condensed;
+    font-size: 5em;
+    margin-bottom: 30px;
+    color: white;
+*/
+    font-family: titulo;
+    font-size: 8em;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: normal;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+}
+
+section h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.6em;
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto 30px;
+    z-index: 1
+}
+
+section h2 span {
+    background: white;
+    padding: 0 20px;
+}
+
+section h2:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: rgba(0,0,0,.2);
+    left: 0;
+    margin: auto;
+    right: 0;
+    top: 50%;
+    z-index: -1;
+}
+
+#fotos {
+    padding: 40px 0;
+    min-height: 54.2vh;
+}
+
+.album {
+    margin-bottom: 80px;
+    position: relative;
+    width: 1000px;
+    margin: auto;
+}
+
+.album h2 {
+    
+}
+
+.album p {
+    font-size: .9em;
+    text-align: center;
+    max-width: 600px;
+    margin: -20px auto 20px;
+    color: #999
+}
+
+.album > div {
+    display: flex;
+    justify-content: space-between;
+    width: 1000px;
+    margin: auto;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.album .foto {
+    width: 23%;
+    background: white;
+    padding: 4px;
+    border-radius: 2px;
+    box-shadow: 0 0 3px rgba(0,0,0,.2);
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: .3s ease;
+    opacity: 0;
+    position: relative;
+}
+
+.album > div > div:hover {
+    box-shadow: 0 0 5px rgba(0,0,0,.4);
+    transform: rotate(0deg) !important
+}
+
+.album .foto > img {
+    width: 50%;
+    display: block;
+    border-radius: 2px;
+    margin: auto;
+}
+
+.album .foto:hover .full {
+    opacity: 1;
+}
+
+.album .full {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(94, 88, 130, 0.87);
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: .3s ease-in;
+}
+
+.album .full img {
+    width: 40px
+}
+
+.album .excluir {
+    position: absolute;
+    background: #ef6644;
+    top: 0;
+    right: 0;
+    width: 25px;
+    border-radius: 3px;
+    padding: 4px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+#full, #novo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: rgba(0,0,0,.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#full > img.fechar, #novo > img.fechar {
+    width: 25px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#full img#ver {
+    max-height: 80vh;
+    max-width: 80vw;
+    background: white;
+    padding: 4px;
+    border-radius: 2px;
+    box-shadow: 0 0 3px rgba(0,0,0,.2);
+}
+
+#full > img:not(#ver):not(.fechar) {
+    position: absolute;
+    width: 30px;
+    background: #0a0a0a;
+    filter: invert(1);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, .3);
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    transition: .2s ease;
+    opacity: .3;
+}
+
+#full > img:not(#ver):not(.fechar):hover {
+    opacity: 7;
+}
+
+#full > img:not(#ver):not(.fechar):active {
+    top: 10px;
+}
+
+#full #esquerda {
+    left: 15px;
+}
+
+#full #direita {
+    right: 15px;
+    transform: rotate(180deg);
+    box-shadow: 0 -2px 5px rgba(255, 255, 255, .3);
+}
+
+#novo {
+/*    display: flex;*/
+}
+
+#novo > div {
+    margin: 20px auto;
+    background: #fcfcfc;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    width: 500px;
+    overflow: hidden;
+}
+
+#novo h3 {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    /* background: #CDDC39; */
+    background: #FFD275;
+    text-transform: uppercase;
+}
+
+#novo form {
+    padding: 20px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input label {
+    color: #aaa;
+    font-size: .8em;
+}
+
+.input input {
+    padding: 10px;
+    border-radius: 2px;
+    margin: 10px 0 20px;
+    resize: none;
+    transition: .3s ease;
+    border: 1px solid #eee;
+    opacity: .7;
+    background: #eee;
+}
+
+.input input:focus {
+    box-shadow: 0 0 3px rgba(0,0,0,.1);
+    opacity: 1;
+    background: white;
+}
+
+.upload {
+    display: flex;
+}
+
+.upload .nome {
+    border: 1px solid #e9e9e9;
+    padding: 10px;
+    font-size: .8em;
+    color: #999;
+    border-radius: 3px 0 0 3px;
+    width: 80%;
+    border-right: 0;
+    margin-bottom: 20px;
+    font-family: encode;
+    margin-top: 10px;
+}
+
+.upload label {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+/*    background: #4a5960;*/
+    background: #FFD275;
+    border-radius: 0 3px 3px 0;
+    margin-bottom: 20px;
+    color: black;
+    font-size: .8em;
+    cursor: pointer;
+    border-left: 2px solid rgba(0,0,0,.2);
+    margin-top: 10px;
+}
+
+.upload label img {
+    width: 20px;
+    margin-right: 10px;
+    filter: invert(1);
+}
+
+.upload input {
+    display: none;
+}
+
+#novo button {
+    float: right;
+}
+
+#abrir {
+    position: fixed;
+    z-index: 11;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    box-sizing: border-box;
+    background: #577fbc;
+    bottom: 20px;
+    right: 10px;
+    border-radius: 50%;
+    box-shadow: 0px 1px 2px rgba(0,0,0,.3);
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+#abrir:not(.fechar):hover {
+    bottom: 15px;
+}
+
+#abrir.fechar {
+    bottom: calc(100% - 50px);
+    background: none;
+    box-shadow: none;
+}
+
+#abrir img {
+    display: block;
+    width: 100%;
+    transition: .3s ease;
+}
+
+#abrir.fechar img {
+    transform: rotate(135deg);
+}

@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+@font-face {
+    src: url("../../fonts/EncodeSans.ttf");
+    font-family: encode;
+}
+
+@font-face {
+    src: url("../../fonts/ReitamRegular.otf");
+    font-family: reitam;
+}
+
+@font-face {
+    src: url("../../fonts/Gentleman on the Rainbow.ttf");
+    font-family: titulo;
+}
+
+@font-face {
+    src: url("../../fonts/Raleway-Regular.ttf");
+    font-family: raleway;
+}
+
+@font-face {
+    src: url("../../fonts/Roboto-Regular.ttf");
+    font-family: roboto;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
+
+*:focus {
+    outline: 0;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    background: transparent !important;
+}
+
+input:focus, select:focus, button:focus, textarea:focus {
+    outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+#container *::-webkit-scrollbar {
+    width: 14px;
+    height: 18px;
+}
+
+#container *::-webkit-scrollbar-thumb {
+    height: 6px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+    border: 4px solid transparent;
+}
+
+#container *::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: transparent;
+}
+
+select:disabled {
+    background: rgb(235, 235, 228);
+}
+
+.clear {
+    clear: both;
+}
+
+button:disabled {
+    opacity: .3;
+    cursor: default !important;
+}
+
+.input input, .input select, .input textarea {
+    font-family: ubuntu;
+}
+
+.botao {
+    padding: 10px 25px;
+    color: white;
+/*    background: rgb(22, 136, 206);*/
+    background: #5e5882;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+body > header {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    transition: .3s ease;
+}
+
+body > header.branco {
+    background: white;
+    border-bottom: 1px solid #eee;
+}
+
+body > header:before {
+/*    content: "";*/
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(48, 43, 99, 0.7);
+    z-index: -1;
+    clip-path: polygon(0 0, 60% 0, 62% 50%, 60% 100%, 0 100%);
+    opacity: 0;
+/*    transition: 1s ease;*/
+}
+
+body > header.branco:before {
+    opacity: 1;
+}
+
+body > header.branco a {
+    color: black;
+}
+
+body > header > div {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+/*    padding: 10px;*/
+    margin: auto;
+    box-sizing: border-box;
+}
+
+body > header > div a {
+    color: white;
+    text-decoration: none;
+    transition: .3s ease;
+    display: block;
+}
+
+body > header > div > a {
+    margin-left: 20px;  
+}
+
+body > header h3 {
+    font-family: titulo;
+    font-weight: normal;
+    font-size: 4em;
+    transition: .3s ease font-size;
+}
+
+body > header a img {
+    width: 210px;
+    transition: .3s ease;
+    margin-top: 8px
+}
+
+body > header.branco a img {
+    filter: invert(1);
+}
+
+body > header.branco h3 {
+    font-size: 3em;
+}
+
+body > header h3 img {
+    width: 70px;
+}
+
+body > header h3 span {
+    margin-left: 10px;
+}
+
+#menu-botao {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 30px;
+    transition: .3s ease;
+}
+
+body > header.branco #menu-botao {
+    filter: invert(1);
+}
+
+body > header ul {
+/*    display: flex;*/
+    align-items: center;
+    list-style: none;
+}
+
+body > header ul li {
+/*    margin-left: 40px;*/
+}
+
+body > header ul li a {
+    color: black;
+    text-transform: uppercase;
+    font-size: .9em;
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+body > header ul li a.selecionado {
+    background: #4267b2;
+    color: white;
+}
+
+body > header nav {
+    position: absolute;
+    right: -100%;
+    top: 120%;
+    width: 50%;
+    max-width: 180px;
+    background: white;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px rgba(0,0,0,.1);
+    transition: .3s ease;
+}
+
+body > header nav.aberto {
+    right: 10px;
+}
+
+body > header:not(.branco) ul li a.selecionado {
+    
+}
+
+#inicio {
+    padding-top: 20px;
+    background-size: 150%;
+    background-attachment: fixed;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0% 95%);
+    background-position: center 0;
+}
+
+#nome { 
+    padding: 40px 0;
+    text-align: center;
+    color: white;
+    z-index: 2;
+    position: relative;
+}
+
+#nome h1 {
+    font-family: titulo;
+    font-size: 8em;
+    color: white;
+    font-weight: normal;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+}
+
+#inicio a {
+    text-transform: uppercase;
+    font-size: .9em;
+    color: white;
+    text-decoration: none;
+    transition: .3s ease;
+    margin: auto;
+    display: inline-table;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    background: rgb(22, 136, 206);
+}
+
+footer {
+    background-size: 150%;
+    background-attachment: fixed;
+    position: relative;
+    background-position: bottom center;
+    position: relative;
+}
+ 
+#inicio .fundo, footer .fundo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(rgba(15, 12, 41, 0.1), rgba(48, 43, 99, 0.4), rgba(36, 36, 62, 0.6) 80%);
+    z-index: 1;
+}
+
+footer > *:not(.fundo) {
+    z-index: 2;
+}
+
+footer > a {
+/*
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: .8em;
+    color: rgba(255,255,255,0.3);
+    background: rgba(0,0,0,.2);
+    padding: 10px 0;
+    text-decoration: none;
+    transition: .3s ease;
+*/
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+}
+
+footer > div:not(.fb-page):not(.fb_reset):not(.fundo) {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 30px 20px;
+    color: white;
+    font-size: .9em;
+    position: relative;
+    width: 100%;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+footer > div p {
+    font-weight: normal;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+    font-family: titulo;
+    font-size: 4em;
+}
+
+footer #redes-sociais {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100px;
+}
+
+footer div a:not(#sitelock) {
+    transition: .3s ease;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+footer div a:not(#sitelock):hover {
+    border-radius: 50%;
+    background: white;
+}
+
+footer div a:not(#sitelock):hover img {
+    filter: invert(0);
+}
+
+footer div a:not(#sitelock) img {
+    width: 100%;
+    filter: invert(1);
+    transition: .3s ease;
+}
+
+footer .fb_iframe_widget {
+/*
+    display: table;
+    position: relative;
+    padding: 10px 0;
+*/
+    margin: 5px 0;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 3px;
+    padding: 4px;
+}
+
+footer > a:hover {
+/*
+    color: rgba(255,255,255,0.6);
+    text-decoration: underline;
+*/
+}
+
+footer > a img {
+/*    margin-left: 10px;*/
+    width: 70px;
+}
