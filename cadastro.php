@@ -26,19 +26,7 @@ if (isset($_GET['estado']) and $_GET['estado']=="completar") {
     </head>
     
     <body>
-       <header class="">
-           <div>
-               <a href="/"><h3>Eu Fui Chamado por Deus</h3></a>
-
-               <img src="img/menu.png" id="menu-botao">
-
-               <nav>
-                   <ul>
-                       <li><a href="/">Inicio</a></li>
-                   </ul>
-               </nav>
-           </div>
-       </header>
+        <? include('html/menu.html'); ?>
        
        <section id="inicio">
            <div class="fundo"></div>

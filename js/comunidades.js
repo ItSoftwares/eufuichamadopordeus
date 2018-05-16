@@ -192,7 +192,7 @@ $(document).on('submit', "form.resposta", function(e) {
 	            pai.prepend(temp);
 
 	            pai.find('form')[0].reset();
-	            $(this).find('button').attr('disabled', false);
+	            pai.find('button').attr('disabled', false);
             }
         }, 
         error: function(result) {
@@ -403,11 +403,11 @@ function adicionarMensagem(dados, elem) {
 				    	temp += "<img src='../../img/foto_perfil.png'>";
 				    else
 				    	temp += "<img src='../../servidor/thumbs-usuarios/"+usuario.foto_perfil+"'>";
-            		temp += "</a>";
+            		temp += "<div>";
             		temp += "<h4>Sua resposta</h4>";
             		temp += "<p>"+msg.texto+"</p>";
             		temp += "</div>";
-            		temp += "</div>";
+            		temp += "</a>";
 
             		elem.find('.fez').after(temp);
             		elem.find('form').hide();
@@ -436,11 +436,11 @@ function carregarRespostas(msg, nome) {
     	temp += "<img src='../../img/foto_perfil.png'>";
     else
     	temp += "<img src='../../servidor/thumbs-usuarios/"+usuario.foto_perfil+"'>";
-	temp += "</a>";
+	temp += "<div>";
 	temp += "<h4>"+nome+"</h4>";
 	temp += "<p>"+msg.texto+"</p>";
 	temp += "</div>";
-	temp += "</div>";
-	
+	temp += "</a>";
+
 	return temp;
 }

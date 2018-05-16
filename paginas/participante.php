@@ -1,6 +1,9 @@
 <?
 require_once (dirname(__DIR__)."/php/classes/usuario.class.php");
 require_once (dirname(__DIR__)."/php/conexao.php");
+session_start();
+$teste = isset($_SESSION['usuario']);
+session_write_close();
 
 $usuario = new usuario();
 $usuario->fromArray($usuario->carregar($_GET['id'])[0]);
@@ -117,7 +120,7 @@ $visibilidade = $usuario->visibilidade==null?true:json_decode($usuario->visibili
             <input type="text" name="site_facebook" disabled>
         </div>
     </div>
-
+    <? if ($teste) { ?>
     <form>
         <div class="input">
             <label>Enviar Mensagem</label>
@@ -125,6 +128,7 @@ $visibilidade = $usuario->visibilidade==null?true:json_decode($usuario->visibili
         </div>
         <button class="botao">Enviar</button>
     </form>
+    <? } ?>
 </section>
 
 <script type="text/javascript">

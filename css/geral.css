@@ -493,7 +493,7 @@ footer > div:not(.fb-page):not(.fb_reset):not(.fundo) {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 40px 20px;
+    padding: 80px 20px;
     color: white;
     font-size: .9em;
     position: relative;

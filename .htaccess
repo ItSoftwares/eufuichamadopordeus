@@ -20,6 +20,9 @@ RewriteCond %{REQUEST_URI} ^/404/$
 RewriteRule ^(.*)$ <YourRelativePathToPHPFile>/404.php [L]
 
 ##ErrorDocument 404 /anuncio/404.php
+RewriteRule ^$ /paginas/comunidade [L]
+RewriteRule ^login?$ index.php
+
 RewriteRule ^cadastro?$ cadastro.php
 RewriteRule ^paginas/fotos?$ paginas/fotos.php
 RewriteRule ^paginas/encontros?$ paginas/encontros.php

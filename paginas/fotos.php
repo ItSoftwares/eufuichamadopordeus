@@ -2,7 +2,7 @@
 session_start();
 require "../php/sessao_usuario.php";
 require "../php/listarArquivos.php";
-verificarSessao();
+// verificarSessao();
 require "../php/conexao.php";
 
 $dirname = dirname(__DIR__).DIRECTORY_SEPARATOR."servidor".DIRECTORY_SEPARATOR."fotos";
@@ -11,6 +11,7 @@ $imagens = listar($dirname);
 
 $albuns = DBselect("album", "order by time DESC");
 
+$selec = 'fotos';
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -30,27 +31,7 @@ $albuns = DBselect("album", "order by time DESC");
     </head>
     
     <body>
-       <header class="">
-           <div>
-<!--               <a href="/"><h3>Eu Fui Chamado por Deus</h3></a>-->
-               <a href="/"><img src="../img/logo.png" alt=""></a>
-
-               <img src="../img/menu.png" id="menu-botao">
-
-               <nav>
-                   <ul>
-                       <li><a href="hoje">Hoje</a></li>
-                       <li><a href="sobre">Sobre</a></li>
-                       <li><a href="encontro">Encontros</a></li>
-                       <li><a href="agenda">Agenda</a></li>
-                       <li><a href="fotos" class="selecionado">Fotos</a></li>
-                       <li><a href="contato">Contato</a></li>
-                       <li><a href="conta">Conta</a></li>
-                       <li><a href="../php/sair.php">Sair</a></li>
-                   </ul>
-               </nav>
-           </div>
-       </header>
+        <? include('../html/menu.html'); ?>
        
        <section id="inicio">
            <div class="fundo"></div>

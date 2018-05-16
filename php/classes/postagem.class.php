@@ -20,7 +20,7 @@ class postagem {
     public function carregar($area_atuacao, $atua_como) {
         $postagens = DBselect('postagem p INNER JOIN usuario u ON p.id_usuario = u.id', "where p.area_atuacao = '{$area_atuacao}' and p.atua_como = {$atua_como}", "p.*, u.foto_perfil, u.nome, u.cidade, u.estado, (select COUNT(id) from postagem_resposta where id_postagem = p.id) respostas");
 
-        $respostas = DBselect("postagem_resposta r INNER JOIN postagem p ON r.id_postagem = p.id INNER JOIN usuario u ON p.id_usuario = u.id", "where id_postagem in (select id from postagem where area_atuacao = '{$area_atuacao}' and atua_como = {$atua_como}) order by id_postagem DESC, time DESC", 'r.*, u.nome, u.cidade, u.estado, u.foto_perfil, u.id as id_usuario');
+        $respostas = DBselect("postagem_resposta r INNER JOIN usuario u ON r.id_usuario = u.id", "where id_postagem in (select id from postagem where area_atuacao = '{$area_atuacao}' and atua_como = {$atua_como}) order by id_postagem DESC, time ASC", 'r.*, u.nome, u.cidade, u.estado, u.foto_perfil, u.id as id_usuario');
 
         return array('postagens'=>$postagens, 'respostas'=>$respostas);
     }

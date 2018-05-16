@@ -4,14 +4,20 @@ require_once (dirname(__DIR__)."/php/sessao_usuario.php");
 require_once (dirname(__DIR__)."/php/conexao.php");
 require_once (dirname(__DIR__)."/php/classes/usuario.class.php");
 require_once (dirname(__DIR__)."/php/classes/postagem.class.php");
-verificarSessao();
+// verificarSessao();
 date_default_timezone_set("America/Sao_Paulo");
 
-$usuario = unserialize($_SESSION['usuario']);
+if (isset($_SESSION['usuario'])) $usuario = unserialize($_SESSION['usuario']);
+else $usuario = false;
 
 if (count($_GET)==0) {
-    $area_atuacao = $usuario->area_atuacao;
-    $atua_como = $usuario->atua_como;
+    if ($usuario==false) {
+        $area_atuacao = "Administração";
+        $atua_como = 2;
+    } else {
+        $area_atuacao = $usuario->area_atuacao;
+        $atua_como = $usuario->atua_como;
+    }
 } else {
     $area_atuacao = $_GET['area_atuacao'];
     $atua_como = $_GET['atua_como'];
@@ -46,12 +52,20 @@ $postagens = $postagens['postagens'];
 
 $usuarios = DBselect('usuario', 'where estado_conta=1 order by RAND() limit 12', 'nome, foto_perfil, id, estado_conta');
 
-// MENSAGENS QUE ME ENVIARAM
-$mensagens_recebidas = DBselect('usuario_mensagem m INNER JOIN usuario u ON m.id_de = u.id', "where id_para = {$usuario->id} order by time DESC", "m.*, u.foto_perfil, u.id as id_usuario, u.nome");
-// MENSAGENS QUE EU FIZ PARA OUTROS USUÁRIOS
-$mensagens_enviadas = DBselect('usuario_mensagem m', "where id_de = {$usuario->id} and m.id in (select id_referencia from usuario_mensagem where id_para = {$usuario->id})", "m.*");
-// RESPOSTAS QUE DEI PARA MINHAS MENSAGENS
-$mensagens_respostas = DBselect('usuario_mensagem m', "where id_de = {$usuario->id} and m.id_referencia in (select id from usuario_mensagem where id_para = {$usuario->id})", "m.*");
+if ($usuario!=false) {
+    // MENSAGENS QUE ME ENVIARAM
+    $mensagens_recebidas = DBselect('usuario_mensagem m INNER JOIN usuario u ON m.id_de = u.id', "where id_para = {$usuario->id} order by time DESC", "m.*, u.foto_perfil, u.id as id_usuario, u.nome");
+    // MENSAGENS QUE EU FIZ PARA OUTROS USUÁRIOS
+    $mensagens_enviadas = DBselect('usuario_mensagem m', "where id_de = {$usuario->id} and m.id in (select id_referencia from usuario_mensagem where id_para = {$usuario->id})", "m.*");
+    // RESPOSTAS QUE DEI PARA MINHAS MENSAGENS
+    $mensagens_respostas = DBselect('usuario_mensagem m', "where id_de = {$usuario->id} and m.id_referencia in (select id from usuario_mensagem where id_para = {$usuario->id})", "m.*");
+} else {
+    $mensagens_recebidas = [];
+    // MENSAGENS QUE EU FIZ PARA OUTROS USUÁRIOS
+    $mensagens_enviadas = [];
+    // RESPOSTAS QUE DEI PARA MINHAS MENSAGENS
+    $mensagens_respostas = [];
+}
 
 $selec = 'comunidades';
 
@@ -77,7 +91,7 @@ $qtd = DBselect('usuario', 'where estado_conta=1', 'count(id) as qtd')[0]['qtd']
     </head>
      
     <body>
-       <? include('../html/menu.html'); ?>
+        <? include('../html/menu.html'); ?>
        
         <section id="inicio">
             <div class="fundo"></div>
@@ -390,7 +404,7 @@ $qtd = DBselect('usuario', 'where estado_conta=1', 'count(id) as qtd')[0]['qtd']
                             </div>
                         </a>
 
-                        <? if ($p->id_usuario==$usuario->id) { ?>
+                        <? if ($usuario!=false and $p->id_usuario==$usuario->id) { ?>
                         <div class="menu">
                             <img src="../../img/menu2.png">
 
@@ -399,7 +413,10 @@ $qtd = DBselect('usuario', 'where estado_conta=1', 'count(id) as qtd')[0]['qtd']
                                 <span class="excluir">Excluir</span>
                             </div>
                         </div>
-                        <? } ?>
+                        <? 
+                        } 
+                        if ($usuario!=false) {
+                        ?>
                         <ul>
                             <form class="resposta">
                                 <input type="hidden" name="id_postagem" value="<? echo $p->id; ?>">
@@ -409,7 +426,7 @@ $qtd = DBselect('usuario', 'where estado_conta=1', 'count(id) as qtd')[0]['qtd']
                                 <button class="botao">Responder</button>
                             </form>
                         </ul>
-
+                        <? } ?>
                     </li>
                     <? } ?>
                 </ul>
@@ -482,13 +499,21 @@ $qtd = DBselect('usuario', 'where estado_conta=1', 'count(id) as qtd')[0]['qtd']
             </div>
         </section>
 
-        <button class="botao" id="nova">Novo Tópico</button>
-        <button class="botao" id="inbox"><img src="../../img/email.png"> Mensagens (<? echo count($mensagens_recebidas); ?>)</button>
-        
         <?
+        if ($usuario!=false) {
+            $qtd = count($mensagens_recebidas)-count($mensagens_respostas)-count($mensagens_enviadas);
+            $qtd = $qtd==0?"":"({$qtd})";
+        ?>
+        <button class="botao" id="nova">Novo Tópico</button>
+        <button class="botao" id="inbox"><img src="../../img/email.png"> Mensagens <? echo $qtd; ?></button>
+        <?
+        }
         include("../html/rodape.html");
         include("../html/popup.html");
         include("../html/confirmacao.html");
+
+        if ($usuario!=false) $usuario = json_encode($usuario->toArray());
+        else $usuario = 0;
         ?>
     </body> 
     <script type="text/javascript">
@@ -497,7 +522,7 @@ $qtd = DBselect('usuario', 'where estado_conta=1', 'count(id) as qtd')[0]['qtd']
         var mensagens_recebidas = <? echo json_encode($mensagens_recebidas); ?>;
         var mensagens_enviadas = <? echo json_encode($mensagens_enviadas); ?>;
         var mensagens_respostas = <? echo json_encode($mensagens_respostas); ?>;
-        var usuario = <? echo json_encode($usuario->toArray()); ?>;
+        var usuario = <? echo $usuario; ?>;
         var area_atuacao = '<? echo $area_atuacao; ?>';
         var atua_como = <? echo $atua_como; ?>;
     </script>

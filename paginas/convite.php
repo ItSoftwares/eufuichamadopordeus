@@ -1,8 +1,10 @@
 <?
 session_start();
 require "../php/sessao_usuario.php";
-verificarSessao();
+// verificarSessao();
 require "../php/conexao.php";
+
+$selec = 'contato';
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -22,27 +24,7 @@ require "../php/conexao.php";
     </head>
     
     <body>
-       <header class="">
-           <div>
-<!--               <a href="/"><h3>Eu Fui Chamado por Deus</h3></a>-->
-               <a href="/"><img src="../img/logo.png" alt=""></a>
-
-               <img src="../img/menu.png" id="menu-botao">
-
-               <nav>
-                   <ul>
-                       <li><a href="hoje">Hoje</a></li>
-                       <li><a href="sobre">Sobre</a></li>
-                       <li><a href="encontro">Encontros</a></li>
-                       <li><a href="agenda">Agenda</a></li>
-                       <li><a href="fotos">Fotos</a></li>
-                       <li><a href="contato" class="selecionado">Contato</a></li>
-                       <li><a href="conta">Conta</a></li>
-                       <li><a href="../php/sair.php">Sair</a></li>
-                   </ul>
-               </nav>
-           </div>
-       </header>
+       <? include('../html/menu.html'); ?>
        
        <section id="inicio">
            <div class="fundo"></div>

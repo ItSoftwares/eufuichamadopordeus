@@ -1,8 +1,10 @@
 <?
 session_start();
 require "../php/sessao_usuario.php";
-verificarSessao();
+// verificarSessao();
 require "../php/conexao.php";
+
+$selec = 'encontro';
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -22,27 +24,7 @@ require "../php/conexao.php";
     </head>
     
     <body>
-       <header class="">
-           <div>
-<!--               <a href="/"><h3>Eu Fui Chamado por Deus</h3></a>-->
-               <a href="/"><img src="../img/logo.png" alt=""></a>
-
-               <img src="../img/menu.png" id="menu-botao">
-
-               <nav>
-                   <ul>
-                       <li><a href="hoje">Hoje</a></li>
-                       <li><a href="sobre">Sobre</a></li>
-                       <li><a href="encontro" class="selecionado">Encontros</a></li>
-                       <li><a href="agenda">Agenda</a></li>
-                       <li><a href="fotos">Fotos</a></li>
-                       <li><a href="contato">Contato</a></li>
-                       <li><a href="conta">Conta</a></li>
-                       <li><a href="../php/sair.php">Sair</a></li>
-                   </ul>
-               </nav>
-           </div>
-       </header>
+        <? include('../html/menu.html'); ?>
        
        <section id="inicio">
            <div class="fundo"></div>
@@ -70,11 +52,11 @@ require "../php/conexao.php";
 
                 <div>
                     <div class="imagem">
-                        <img src="../img/encontros-2.jpg" class="fundo">
+                        <img src="../img/encontros-2.jpg" class="fundo-imagem">
                         <img src="../img/encontros-2.jpg">
                     </div>
                     <div class="imagem">
-                        <img src="../img/encontros-3.jpg" class="fundo">
+                        <img src="../img/encontros-3.jpg" class="fundo-imagem">
                         <img src="../img/encontros-3.jpg">
                     </div>
                 </div>

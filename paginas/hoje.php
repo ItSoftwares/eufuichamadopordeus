@@ -1,7 +1,7 @@
 <?
 session_start();
 require "../php/sessao_usuario.php";
-verificarSessao();
+// verificarSessao();
 require "../php/conexao.php";
 require "../php/classes/usuario.class.php";
 date_default_timezone_set("America/Sao_Paulo");
@@ -25,7 +25,8 @@ while($semana>7) {
 
 $dias = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
 
-$usuario = unserialize($_SESSION['usuario']);
+if (isset($_SESSION['usuario'])) $usuario = unserialize($_SESSION['usuario']);
+else $usuario = false;
 
 $cumprimeto = "Bom dia";
 if (date("G")>11) $cumprimeto = "Boa tarde";
@@ -64,18 +65,20 @@ $selec = 'hoje';
     </head>
      
     <body class="<? echo ($aviso['ativo']==1 and (!isset($_SESSION['aviso'])))?"hidden":""; ?>">
-       <? include('../html/menu.html'); ?>
+        <? include('../html/menu.html'); ?>
        
-       <section id="inicio">
+        <section id="inicio">
            <div class="fundo"></div>
            
            <div id="nome">
-               <h3><? echo $cumprimeto." <span style='color: #ff0; text-transform: capitalize;'>".(explode(" ",$usuario->nome)[0])."!</span>"; ?></h3>
-               <h3>Hoje é <span style="text-transform: Capitalize"><? echo $dias[$hoje-1]; ?></span>, dia <? echo date("d/m"); ?></h3>
-<!--               <br>-->
-               <h3><? echo $frases[$hoje-1]['frase']; ?></h3>
+                <? if ($usuario) {?>
+                <h3><? echo $cumprimeto." <span style='color: #ff0; text-transform: capitalize;'>".(explode(" ",$usuario->nome)[0])."!</span>"; ?></h3>
+                <? } ?>
+                <h3>Hoje é <span style="text-transform: Capitalize"><? echo $dias[$hoje-1]; ?></span>, dia <? echo date("d/m"); ?></h3>
+
+                <h3><? echo $frases[$hoje-1]['frase']; ?></h3>
            </div>
-       </section>
+        </section>
         
         <section id="conteudo">
             <h2><span><? echo $conteudo[$hoje-1]['titulo']; ?></span></h2>
@@ -112,7 +115,9 @@ $selec = 'hoje';
         <?
 		}
 		?>
+        <? if ($usuario) {?>
         <img src="../img/pdf.png" id="baixar-pdf">
+        <? } ?>
         
         <?
         include("../html/rodape.html");

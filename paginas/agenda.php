@@ -11,9 +11,9 @@ date_default_timezone_set("America/Sao_Paulo");
 
 $usuario = unserialize($_SESSION['usuario']);
 
-if ($usuario->rua=="" or $usuario->bairro=="" or $usuario->numero=="" or $usuario->cep=="") {
-    header("location: conta?atualizar=1");
-}
+// if ($usuario->rua=="" or $usuario->bairro=="" or $usuario->numero=="" or $usuario->cep=="") {
+//     header("location: conta?atualizar=1");
+// }
 
 $encontros = DBselect("encontros", "where finalizado=0 and agendado=1 order by data ASC");
 $pagamentos = DBselect("pagamento", "where id_usuario={$usuario->id} order by id DESC");
@@ -54,6 +54,8 @@ $sessionCode = $json->id;
 $link = DBselect("youtube", "where id=1")[0]['link']; 
 
 $inscricoes = DBselect("encontro_inscritos", "order by id_encontro ASC, id ASC");
+
+$selec = "agenda";
 ?>
     <!DOCTYPE HTML>
     <html>
@@ -74,23 +76,7 @@ $inscricoes = DBselect("encontro_inscritos", "order by id_encontro ASC, id ASC")
     </head>
 
     <body>
-        <header class="">
-            <div>
-                <a href="/"><img src="../img/logo.png" alt=""></a> <img src="../img/menu.png" id="menu-botao">
-                <nav>
-                    <ul>
-                        <li><a href="hoje">Hoje</a></li>
-                        <li><a href="sobre">Sobre</a></li>
-                        <li><a href="encontro">Encontros</a></li>
-                        <li><a href="agenda" class="selecionado">Agenda</a></li>
-                        <li><a href="fotos">Fotos</a></li>
-                        <li><a href="contato">Contato</a></li>
-                        <li><a href="conta">Conta</a></li>
-                        <li><a href="../php/sair.php">Sair</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+        <? include('../html/menu.html'); ?>
         
         <section id="inicio">
             <div class="fundo"></div>
