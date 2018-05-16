@@ -441,6 +441,6 @@ function carregarRespostas(msg, nome) {
 	temp += "<p>"+msg.texto+"</p>";
 	temp += "</div>";
 	temp += "</div>";
-
+	
 	return temp;
 }
