@@ -388,10 +388,6 @@ $qtd = DBselect('usuario', 'where estado_conta=1', 'count(id) as qtd')[0]['qtd']
                         $p = new Postagem($p);
                     ?>
                     <li class="postagem fechada" data-index='<? echo $key; ?>'>
-                        <div class="resumo">
-                            <h3><? echo $p->titulo ?> <span>(<? echo $p->respostas ?> Respostas)</span></h3>
-                            <p><? echo strlen($p->texto)>300?substr($p->texto, 0, 300)."...":$p->texto; ?></p>
-                        </div>
                         <a class="criador" href="/paginas/participante/<? echo $p->id_usuario ?>" data-id='<? echo $p->id_usuario ?>'>
                             <? if ($p->foto_perfil == null or $p->foto_perfil == "") { ?>
                             <img src="../../img/foto_perfil.png">
@@ -403,6 +399,11 @@ $qtd = DBselect('usuario', 'where estado_conta=1', 'count(id) as qtd')[0]['qtd']
                                 <p><? echo $p->cidade; ?>/<? echo $p->estado; ?></p>
                             </div>
                         </a>
+
+                        <div class="resumo">
+                            <h3><? echo $p->titulo ?> <span>(<? echo $p->respostas ?> Respostas)</span></h3>
+                            <p><? echo strlen($p->texto)>300?substr($p->texto, 0, 300)."...":$p->texto; ?></p>
+                        </div>
 
                         <? if ($usuario!=false and $p->id_usuario==$usuario->id) { ?>
                         <div class="menu">
@@ -470,6 +471,7 @@ $qtd = DBselect('usuario', 'where estado_conta=1', 'count(id) as qtd')[0]['qtd']
                                 <input type="text" name="texto" required placeholder="Responda essa mensagem">
                             </div>
                             <button class="botao">Responder</button>
+                            <div class="clear"></div>
                         </form>
                     </li>
                     <? } ?>

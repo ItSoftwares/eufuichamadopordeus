@@ -72,17 +72,18 @@ input:-webkit-autofill:active {
     background: transparent;
 }
 
+/* ======================== */
+/* INPUTS */
+/* ======================== */
+
 select:disabled {
     background: rgb(235, 235, 228);
-}
-
-.clear {
-    clear: both;
+    cursor: no-drop !important;
 }
 
 button:disabled {
     opacity: .3;
-    cursor: default !important;
+    cursor: no-drop !important;
 }
 
 .input input, .input select, .input textarea {
@@ -92,17 +93,125 @@ button:disabled {
 .botao {
     padding: 10px 25px;
     color: white;
-/*    background: rgb(22, 136, 206);*/
     background: #5e5882;
     cursor: pointer;
     border-radius: 2px;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+.botao img {
+    width: 15px;
+    display: block;
+    margin-right: 7px;
+}
+
+.botao:disabled {
+    cursor: no-drop;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input.metade {
+    width: 24%;
+}
+
+.input > label {
+    font-size: .8em;
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.input > label span {
+    color: #FF5722;
+    /* font-weight: normal; */
+    font-size: .9em;
+    margin-left: 10px;
+}
+
+.input *:disabled {
+    opacity: .5;
+    cursor: no-drop;
+}
+
+.input input, .input textarea, .input select {
+    padding: 10px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    resize: none;
+    transition: .3s ease;
+    border: 1px solid #eee;
+    opacity: .7;
+    background: #eee;
+}
+
+.input textarea {
+    height: 80px;
+}
+
+.input input:focus, .input textarea:focus, .input select:focus {
+    /*border-color: #60d3e2;*/
+    box-shadow: 0 0 3px rgba(0,0,0,.1);
+    opacity: 1;
+    background: white;
+}
+
+.checkbox label {
+    cursor: pointer;
+    display: flex;
+}
+
+.checkbox div {
+    width: 10px;
+    margin-right: 8px;
+    padding: 3px;
+    background: #5e5882;
+    border-radius: 3px;
+    opacity: .5;
+    transition: .3s ease;
+}
+
+.checkbox div img {
+    width: 100%;
+    display: block;
+    opacity: 0;
+    transition: .3s ease;
+}
+
+.checkbox span {
+    color: #999;
+    text-align: center;
+    font-size: .8em;
+}
+
+.checkbox input {
+    display: none;
+}
+
+.checkbox input:checked + label div, .checkbox input:checked + label img {
+    opacity: 1;
+}
+
+.checkbox input:disabled + label span {
+    text-decoration: line-through;
+}
+
+.clear {
+	clear: both;
 }
 
 body > header {
-    position: fixed;
+    position: absolute;
     width: 100%;
     z-index: 10;
     transition: .3s ease;
+    overflow-x: hidden;
 }
 
 body > header.branco {
@@ -111,7 +220,7 @@ body > header.branco {
 }
 
 body > header:before {
-/*    content: "";*/
+    /*content: "";*/
     position: absolute;
     left: 0;
     top: 0;
@@ -121,7 +230,7 @@ body > header:before {
     z-index: -1;
     clip-path: polygon(0 0, 60% 0, 62% 50%, 60% 100%, 0 100%);
     opacity: 0;
-/*    transition: 1s ease;*/
+    /*transition: 1s ease;*/
 }
 
 body > header.branco:before {
@@ -138,7 +247,7 @@ body > header > div {
     display: flex;
     justify-content: space-between;
     align-items: center;
-/*    padding: 10px;*/
+    /*padding: 10px;*/
     margin: auto;
     box-sizing: border-box;
 }
@@ -198,13 +307,13 @@ body > header.branco #menu-botao {
 }
 
 body > header ul {
-/*    display: flex;*/
+    /*display: flex;*/
     align-items: center;
     list-style: none;
 }
 
 body > header ul li {
-/*    margin-left: 40px;*/
+    /*margin-left: 40px;*/
 }
 
 body > header ul li a {
@@ -222,9 +331,9 @@ body > header ul li a.selecionado {
 }
 
 body > header nav {
-    position: absolute;
+    position: fixed;
     right: -100%;
-    top: 120%;
+    top: 50px;
     width: 50%;
     max-width: 180px;
     background: white;
@@ -242,17 +351,48 @@ body > header:not(.branco) ul li a.selecionado {
     
 }
 
+section > h2:not(.titulo-normal), h2.titulo {
+    font-weight: normal;
+    text-align: center;
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto 30px;
+    z-index: 1;
+    color: #666;
+}
+
+section > h2 span, h2.titulo span {
+    /*background: white;*/
+    padding: 0 20px;
+    cursor: default;
+}
+
+section > h2:before, h2.titulo:before {
+    /*content: "";*/
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: rgba(0,0,0,.2);
+    left: 0;
+    margin: auto;
+    right: 0;
+    top: 50%;
+    z-index: -1;
+}
+
 #inicio {
-    padding-top: 20px;
+    padding-top: 30px;
     background-size: 150%;
     background-attachment: fixed;
     position: relative;
-    clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0% 95%);
+    /*clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0% 95%);*/
     background-position: center 0;
+    box-shadow: 0 0 5px rgba(0,0,0,.5)
 }
 
 #nome { 
-    padding: 40px 0;
+    padding: 20px 0;
     text-align: center;
     color: white;
     z-index: 2;
@@ -297,22 +437,53 @@ footer {
     z-index: 1;
 }
 
+*:not(#inicio):not(footer) > .fundo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: rgba(0,0,0,.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+*:not(#inicio):not(footer) > .fundo > img.fechar {
+    width: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+*:not(#inicio):not(footer) > .fundo > div {
+    margin: 20px auto;
+    background: #fcfcfc;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    width: 96%;
+    max-width: 400px;
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+*:not(#inicio):not(footer) > .fundo h3 {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    background: #03A9F4;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+
 footer > *:not(.fundo) {
     z-index: 2;
 }
 
 footer > a {
-/*
-    display: none;
-    align-items: center;
-    justify-content: center;
-    font-size: .8em;
-    color: rgba(255,255,255,0.3);
-    background: rgba(0,0,0,.2);
-    padding: 10px 0;
-    text-decoration: none;
-    transition: .3s ease;
-*/
     position: absolute;
     bottom: 5px;
     left: 5px;
@@ -323,7 +494,7 @@ footer > div:not(.fb-page):not(.fb_reset):not(.fundo) {
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
-    padding: 30px 20px;
+    padding: 50px 20px;
     color: white;
     font-size: .9em;
     position: relative;
@@ -370,25 +541,18 @@ footer div a:not(#sitelock) img {
 }
 
 footer .fb_iframe_widget {
-/*
-    display: table;
-    position: relative;
-    padding: 10px 0;
-*/
     margin: 5px 0;
     background: rgba(255, 255, 255, 1);
-    border-radius: 3px;
+    border-radius: 5px;
     padding: 4px;
+    transform: scale(.7);
+    overflow: hidden;
 }
 
 footer > a:hover {
-/*
-    color: rgba(255,255,255,0.6);
-    text-decoration: underline;
-*/
 }
 
 footer > a img {
-/*    margin-left: 10px;*/
+    /*margin-left: 10px;*/
     width: 70px;
 }

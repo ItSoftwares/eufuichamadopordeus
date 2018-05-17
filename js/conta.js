@@ -235,7 +235,7 @@ function limparImagemPerfil() {
 function restaurarInformacoes() {
     $.each(usuario, function(i, value) {
         if (i=="foto_perfil") {
-            if (value!=null) $("#foto img").attr('src', "../../servidor/thumbs-usuarios/"+value);
+            if (value!=null && value!="") $("#foto img").attr('src', "../../servidor/thumbs-usuarios/"+value);
             return true;
         }
 

@@ -2,69 +2,24 @@
     font-family: ubuntu;
 }
 
-#inicio {
+#inicio, footer {
     background-image: url(../../img/back-convite.jpg);
-}
-
-footer {
-    background-image: url(../../img/back-convite.jpg);
-}
-
-#inicio .fundo, footer .fundo { 
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-/*    background: radial-gradient(rgba(0, 0, 0, 0.28),rgba(0, 0, 0, 0.6));*/
-    background: radial-gradient(rgba(15, 12, 41, 0.1), rgba(48, 43, 99, 0.4), rgba(36, 36, 62, 0.6) 80%);
-    z-index: 1;
 }
 
 section > h2 {
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 1.6em;
-    position: relative;
-    width: 90%;
-    margin: 30px auto;
-    z-index: 1
-}
-
-section > h2 span {
-    background: white;
-    padding: 0 20px;
-}
-
-section > h2:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: rgba(0,0,0,.2);
-    left: 0;
-    margin: auto;
-    right: 0;
-    top: 50%;
-    z-index: -1;
+    margin-top: 30px;
 }
 
 #convite {
-/*    padding: 0 0 0;*/
+    /*padding: 0 0 0;*/
     min-height: 50vh;
     background: #2f2f2f;
-    clip-path:  polygon(0 0, 50% 3%, 100% 0, 100% 100%, 0 100%);
+    /*clip-path:  polygon(0 0, 50% 3%, 100% 0, 100% 100%, 0 100%);*/
 }
 
 #convite > div {
     width: 100%;
     position: relative;
-/*
-    background: url(../../img/back-login.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-*/
-/*    height: 60vh;*/
     padding-bottom: 60px;
     padding: 20px;
     box-sizing: border-box;
@@ -76,16 +31,10 @@ section > h2:before {
     top: 0;
     width: 100%;
     height: 100%;
-/*    background: rgba(15, 12, 41, 0.4);*/
-/*    clip-path: polygon(0 0, 50% 3%, 100% 0, 100% 100%, 50% 97%, 0 100%);*/
 }
 
 #convite img {
     width: 100%;
-/*
-    clip-path:  polygon(0 0, 50% 3%, 100% 0, 100% 100%, 50% 97%, 0 100%);
-    display: block;
-*/
     opacity: 0;
     display: none;
 }
@@ -103,7 +52,7 @@ section > h2:before {
     text-shadow: 2px 2px 1px rgba(0,0,0,.5);
     text-align: justify;
     margin-bottom: 20px;
-/*    font-weight: bold;*/
+    /*font-weight: bold;*/
 }
 
 #contato {
@@ -127,9 +76,9 @@ section > h2:before {
     margin: 10px 0 20px;
     resize: none;
     border: 1px solid #ccc;
-/*    opacity: .7;*/
+    /*opacity: .7;*/
     background: #ccc;
-/*    box-shadow: 0 0 0px rgba(0,0,0,.1);*/
+    /*box-shadow: 0 0 0px rgba(0,0,0,.1);*/
     transition: .3s ease;
     box-sizing: border-box;
 }

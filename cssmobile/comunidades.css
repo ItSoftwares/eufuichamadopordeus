@@ -11,33 +11,38 @@ body {
 }
 
 #inicio nav {
-	z-index: 2;
-    position: absolute;
+    z-index: 2;
+    position: relative;
     bottom: 5px;
-    left: 5px;
-    width: 500px;
+    left: 0;
+    width: 100%;
+}
+
+#inicio nav .input {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: row
 }
 
 #inicio input, #inicio select {
-	margin-bottom: 5px;
+    margin-bottom: 5px;
+    width: 48%;
 }
 
 #inicio input {
 	text-align: center;
     opacity: .7;
     font-weight: bold;
-    font-size: 1.2em;
 }
 
 #comunidades {
-	width: 100%;
-	max-width: 1300px;
-	margin: 40px auto;
-	display: flex;
-	padding: 0 15px;
-	box-sizing: border-box;
-	flex-direction: row-reverse;
-	min-height: 80vh;
+    width: 96%;
+    margin: 40px auto;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column-reverse;
 }
 
 h2.titulo span {
@@ -47,14 +52,6 @@ h2.titulo span {
 
 h2.titulo:before {
 	content: none;
-}
-
-aside {
-	width: 25%;
-	max-width: 500px;
-	margin-left: 15px;
-	padding-left: 15px;
-	border-left: 1px dashed #ccc;
 }
 
 aside h3 {
@@ -90,9 +87,8 @@ aside li a img {
 }
 
 article {
-	width: 75%;
-	/*max-width: 700px;*/
-	position: relative;;
+	position: relative;
+    margin-bottom: 20px;
 }
 
 article#postagens h4#qtd {
@@ -113,7 +109,7 @@ li.postagem {
 	align-items: flex-start;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	flex-direction: row;
+    flex-direction: column;
 }
 
 li.postagem:not(:last-child) {
@@ -121,7 +117,7 @@ li.postagem:not(:last-child) {
 }
 
 li.postagem:not(.sub) {
-    padding: 15px;
+    padding: 10px;
     border-radius: 3px;
     box-shadow: 0 0 5px rgba(0,0,0,.3);
     margin-bottom: 20px;
@@ -130,9 +126,6 @@ li.postagem:not(.sub) {
 }
 
 li.postagem .resumo {
-	width: 87%;
-	text-decoration: none;
-	color: black;
 }
 
 li.postagem .resumo h3 {
@@ -158,31 +151,32 @@ li.postagem .resumo p {
 }
 
 li.postagem .criador {
-    width: 11%;
+    width: 100%;
     display: flex;
-    /*align-items: center;*/
     color: black;
     text-decoration: none;
-    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px dashed rgba(0,0,0,.2);
+    margin-bottom: 10px;
 }
 
 li.postagem .criador img {
-	background: #b8b8b8;
+    background: #b8b8b8;
     border-radius: 50%;
     box-shadow: 0 0 3px rgba(0,0,0,.3);
-    width: 100%;
-    max-width: 100px;
+    width: 50px;
     margin-bottom: 10px;
+    margin-right: 10px;
 }
 
 li.postagem .criador div {
 	font-size: .9em;
     color: #5e5882;
-	text-align: center;
+	/*text-align: center;*/
 }
 
 li.postagem .criador p {
-    font-size: .9em;
+    font-size: .8em;
     margin-top: 3px;
     color: #666;
     font-style: italic;
@@ -237,7 +231,7 @@ li.postagem .menu div span.editar {
 }
 
 li.postagem ul {
-	padding-left: 40px;
+	padding-left: 10px;
 	margin-top: 10px;
 	box-sizing: border-box;
 	width: 100%;
@@ -251,7 +245,7 @@ li.postagem.sub {
 	border-bottom: none;
 	margin-bottom: 0;
 	position: relative;
-	padding-left: 25px;
+	padding-left: 10px;
 	padding-top: 10px;
     flex-direction: row-reverse;
 }
@@ -267,12 +261,13 @@ li.postagem.sub:before {
 }
 
 li.postagem.sub .criador {
-	width: 8%;
+	width: 12%;
+    border-bottom: none;
 }
 
 li.postagem.sub .resumo {
     font-size: .9em;
-    width: 90%;
+    width: 86%;
 }
 
 li.postagem.sub h4 {
@@ -297,11 +292,12 @@ li.postagem .resposta {
 	margin-top: 10px;
     display: flex;
     align-items: flex-start;
+    flex-wrap: wrap;
     /*justify-content: space-between;*/
 }
 
 li.postagem .resposta .input {
-    width: 82%;
+    width: 100%;
 }
 
 li.postagem .resposta textarea {
@@ -309,7 +305,7 @@ li.postagem .resposta textarea {
 }
 
 li.postagem .resposta button {
-    margin-left: 20px;
+    margin-top: 10px;
 }
 
 button#nova {
@@ -329,7 +325,6 @@ button#inbox {
 }
 
 #nova-postagem > div {
-	width: 450px !important;
 }
 
 #nova-postagem form {
@@ -359,8 +354,6 @@ article#participante {
 }
 
 #perfil {
-	width: 500px;
-    margin: auto;
 }
 
 .card {
@@ -420,12 +413,16 @@ article#participante {
 	width: 100%;
 }
 
+#participante form input {
+
+}
+
 #participante button:not(.voltar) {
 	float: right;
 }
 
 .voltar {
-	float: left;
+	/*float: left;*/
     background: none;
     color: black;
     font-style: italic;
@@ -460,7 +457,7 @@ article#participante {
     background: white;
     box-shadow: 0 0 5px rgba(0,0,0,.3);
     border-radius: 3px;
-    padding: 15px;
+    padding: 10px;
     margin-bottom: 20px;
 }
 
@@ -505,23 +502,19 @@ article#participante {
 }
 
 .mensagem form {
-	display: flex;
-	align-items: center;
 	margin-top: 10px;
 }
 
 .mensagem .input {
-    width: 87%;
-    margin-right: 10px;
+    width: 100%;
 }
 
 .mensagem .input input {
-	margin-bottom: 0;
+	margin-bottom: 10px;
 }
 
 .mensagem button {
-    /*margin-top: 10px;*/
-    /*background: #eee;*/
-    /*color: black;*/
     padding: 10px;
+    float: right;
+    float: right;
 }

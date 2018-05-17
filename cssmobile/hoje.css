@@ -8,34 +8,12 @@
 }
 
 section > h2 {
-    text-align: center;
     text-transform: uppercase;
-    font-size: 1.6em;
-    position: relative;
-    max-width: 1000px;
-    width: 100%;
-    margin: 0 auto 30px;
-    z-index: 1;
-    cursor: default;
-    background: #efefef;
 }
 
 section > h2 span {
-    background: #efefef;
-    padding: 0 20px;
-}
-
-section > h2:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: rgba(0,0,0,.2);
-    left: 0;
-    margin: auto;
-    right: 0;
-    top: 50%;
-    z-index: -1;
+    background: #eee;
+    font-size: .8em;
 }
 
 body {
@@ -298,6 +276,10 @@ CONTEUDO
     font-size: 1.1em;
     text-align: justify;
     margin-bottom: 30px;
+    padding: 10px 9px;
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
 }
 
 #semanal {
