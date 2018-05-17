@@ -22,71 +22,8 @@
     background: transparent;
 }
 
-#inicio {
-    padding-top: 20px;
+#inicio, footer {
     background: url(../img/back-cadastro2.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    position: relative;
-    clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0% 95%);
-    background-position: 0 -100px;
-}
-
-footer {
-    background-image: url(../img/back-cadastro2.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    position: relative;
-}
-
-#inicio .fundo, footer .fundo {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-/*    background: radial-gradient(rgba(0, 0, 0, 0.28),rgba(0, 0, 0, 0.6));*/
-    background: radial-gradient(rgba(15, 12, 41, 0.1), rgba(48, 43, 99, 0.4), rgba(36, 36, 62, 0.6) 80%);
-    z-index: 1;
-}
-
-#inicio a {
-    text-transform: uppercase;
-    font-size: .9em;
-    color: white;
-    text-decoration: none;
-    transition: .3s ease;
-    position: absolute;
-    right: 10px;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    display: inline-table;
-    box-shadow: 0 0 5px rgba(0,0,0,.5);
-    background: rgb(22, 136, 206);
-}
-
-#nome {
-    padding: 80px 0;
-    text-align: center;
-    color: white;
-    z-index: 2;
-    position: relative;
-}
-
-#nome h1 {
-/*
-    font-family: saira extra condensed;
-    font-size: 5em;
-    margin-bottom: 30px;
-    color: white;
-*/
-    font-family: titulo;
-    font-size: 8em;
-    margin-bottom: 20px;
-    color: white;
-    font-weight: normal;
-    text-shadow: 1px 1px 2px rgba(0,0,0,.5);
 }
 
 section > h2 {
@@ -179,7 +116,7 @@ table td, table th {
 #apagar {
     position: absolute;
     right: 15px;
-    top: 0;
+    top: 10px;
     z-index: 1;
 }
 
@@ -194,12 +131,17 @@ table td, table th {
 }
 
 #paginas li {
-    margin: 0 5px;
+    margin: 0;
     cursor: pointer;
     transition: .3s ease;
     font-weight: bold;
     padding: 3px;
-    border-radius: 2px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #paginas li[data-aberto="0"] {
@@ -207,7 +149,7 @@ table td, table th {
 }
 
 #paginas li[data-aberto="1"] {
-    display: block;
+    /*display: block;*/
 }
 
 #paginas li.selecionado {

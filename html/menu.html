@@ -18,7 +18,19 @@ unset($_SESSION['erro_msg']);
 
        <nav>
            <ul>
-           		<? if (isset($_SESSION['usuario'])) { ?>
+           		<? 
+           		if (isset($_SESSION['usuario'])) { 
+					if ($_SESSION['tipo_usuario']==2) {
+				?>	
+				<li><a href="hoje" class="<? echo $selec=='hoje'?'selecionado':''; ?>">Hoje</a></li>
+				<li><a href="participantes" class="<? echo $selec=='participantes'?'selecionado':''; ?>">Participantes</a></li>
+				<li><a href="gerar" target="_blank">Gerar</a></li>
+				<li><a href="sobre" class="<? echo $selec=='sobre'?'selecionado':''; ?>">Sobre ADM</a></li>
+				<li><a href="fotos" class="<? echo $selec=='fotos'?'selecionado':''; ?>">Fotos ADM</a></li>
+				<li><a href="../php/sair.php">Sair</a></li>
+				<?
+					} else {
+           		?>
                 <li><a href="comunidades" class="<? echo $selec=='comunidades'?'selecionado':''; ?>">Comunidades</a></li>
                 <li><a href="hoje" class="<? echo $selec=='hoje'?'selecionado':''; ?>">Hoje</a></li>
                 <li><a href="sobre" class="<? echo $selec=='sobre'?'selecionado':''; ?>">Sobre</a></li>
@@ -28,7 +40,9 @@ unset($_SESSION['erro_msg']);
                 <li><a href="contato" class="<? echo $selec=='contato'?'selecionado':''; ?>">Contato</a></li>
                 <li><a href="conta" class="<? echo $selec=='conta'?'selecionado':''; ?>">Conta</a></li>
                 <li><a href="../php/sair.php">Sair</a></li>
-                <? } else {?>
+                <? 
+            		} 
+            	} else {?>
 				<li><a href="comunidades" class="<? echo $selec=='comunidades'?'selecionado':''; ?>">Comunidades</a></li>
             	<li><a href="hoje" class="<? echo $selec=='hoje'?'selecionado':''; ?>">Hoje</a></li>
                 <li><a href="sobre" class="<? echo $selec=='sobre'?'selecionado':''; ?>">Sobre</a></li>

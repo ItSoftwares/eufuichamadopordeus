@@ -6,48 +6,8 @@ body.hidden {
     overflow: hidden;
 }
 
-#inicio {
-    padding-top: 20px;
+#inicio, footer {
     background: url(../img/back-agenda.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    position: relative;
-    clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0% 95%);
-    background-position: 0 -150px;
-}
-
-footer {
-    background-image: url(../img/back-agenda.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    position: relative;
-}
-
-#inicio .fundo, footer .fundo {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(rgba(15, 12, 41, 0.1), rgba(48, 43, 99, 0.4), rgba(36, 36, 62, 0.6) 80%);
-    z-index: 1;
-}
-
-#nome {
-    padding: 30px 0 80px;
-    text-align: center;
-    color: white;
-    z-index: 2;
-    position: relative;
-}
-
-#nome h1 {
-    font-family: titulo;
-    font-size: 8em;
-    margin-bottom: 20px;
-    color: white;
-    font-weight: normal;
-    text-shadow: 1px 1px 2px rgba(0,0,0,.5);
 }
 
 #video {
@@ -66,35 +26,6 @@ footer {
     background: rgba(0, 0, 0, 0.44);
     border-radius: 3px;
     box-shadow: 0 0 5px rgba(0,0,0,.3);
-}
-
-section h2 {
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 1.6em;
-    position: relative;
-    max-width: 1000px;
-    width: 100%;
-    margin: 0 auto 30px;
-    z-index: 1
-}
-
-section h2 span {
-    background: white;
-    padding: 0 20px;
-}
-
-section h2:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: rgba(0,0,0,.2);
-    left: 0;
-    margin: auto;
-    right: 0;
-    top: 50%;
-    z-index: -1;
 }
 
 #encontros {
@@ -142,6 +73,10 @@ section h2:before {
     display: flex;
     justify-content: space-between;
     align-items: end;
+}
+
+.encontro section div:nth-child(2) {
+	display: flex;
 }
 
 .encontro.participante section {

@@ -5,6 +5,8 @@ verificarSessao(1);
 require "../php/conexao.php";
 
 $slide = DBselect("slide"); 
+
+$selec = "sobre";
 ?>
 <!DOCTYPE HTML> 
 <html>
@@ -24,25 +26,7 @@ $slide = DBselect("slide");
     </head>
     
     <body>
-       <header class="">
-           <div>
-<!--               <a href="/"><h3>Eu Fui Chamado por Deus</h3></a>-->
-               <a href="/"><img src="../img/logo.png" alt=""></a>
-
-               <img src="../img/menu.png" id="menu-botao">
-
-               <nav>
-                   <ul>
-                      <li><a href="hoje">Hoje</a></li>
-                       <li><a href="participantes">Participantes</a></li>
-                       <li><a href="gerar" target="_blank">Gerar</a></li>
-                       <li><a href="sobre" class="selecionado">Sobre ADM</a></li>
-                       <li><a href="fotos">Fotos ADM</a></li>
-                       <li><a href="../php/sair.php">Sair</a></li>
-                   </ul>
-               </nav>
-           </div>
-       </header>
+        <? include("../html/menu.html"); ?>
        
        <section id="inicio">
            <div class="fundo"></div>
