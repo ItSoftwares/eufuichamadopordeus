@@ -6,6 +6,11 @@ body {
 	background: #f9f9f9;
 }
 
+#nome h1 {
+	font-family: reitam;
+    font-size: 4em;
+}
+
 #inicio, footer {
     background-image: url(../img/back-conta.jpg);
 }

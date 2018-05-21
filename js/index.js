@@ -29,7 +29,7 @@ $("#login form").submit(function(e) {
             console.log(result);
            // return;
             if(result.estado==1) {
-                location.href="paginas/hoje";
+                location.href="paginas/comunidades";
             } else if(result.estado==2 || result.estado==3) {
                 chamarPopupInfo(result.mensagem);
                 $("form button").attr("disabled", false);

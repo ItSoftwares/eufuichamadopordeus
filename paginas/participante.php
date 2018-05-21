@@ -28,20 +28,20 @@ $visibilidade = $usuario->visibilidade==null?true:json_decode($usuario->visibili
     </div>
 
     <div id="informacoes" class="card">
-        <div class="input metade" data-esconder="<? echo $visibilidade===true?0:($visibilidade['celular']?0:1); ?>">
+        <div class="input metade" data-esconder="<? echo $visibilidade===true?1:($visibilidade['celular']?0:1); ?>">
             <label>Celular</label>
             <input type="text" name="celular" disabled>
         </div>
-        <div class="input metade" data-esconder="<? echo $visibilidade===true?0:($visibilidade['data_nascimento']?0:1); ?>">
+        <div class="input metade" data-esconder="<? echo $visibilidade===true?1:($visibilidade['data_nascimento']?0:1); ?>">
             <label>Data de Nascimento</label>
             <input type="text" name="data_nascimento" disabled>
         </div>
         
-        <div class="input metade" data-esconder="<? echo $visibilidade===true?0:($visibilidade['pais']?0:1); ?>">
+        <div class="input metade" data-esconder="<? echo $visibilidade===true?1:($visibilidade['pais']?0:1); ?>">
             <label>Pais</label>
             <input name="pais" disabled>
         </div>
-        <div class="input metade" data-esconder="<? echo $visibilidade===true?0:($visibilidade['estado_civil']?0:1); ?>">
+        <div class="input metade" data-esconder="<? echo $visibilidade===true?1:($visibilidade['estado_civil']?0:1); ?>">
             <label>Estado Civil</label>
             <select name="estado_civil" disabled>
                 <option value="0"></option>
@@ -73,7 +73,7 @@ $visibilidade = $usuario->visibilidade==null?true:json_decode($usuario->visibili
                 <option value='11'>Evangelho Quadrangular</option>
                 <option value='12'>Internacional da Graça de Deus</option>
                 <option value='13'>Luterana</option>
-                <option value='14'>Maranata</option>
+                <option value='14'>Igreja Maranata</option>
                 <option value='15'>Metodista</option>
                 <option value='16'>Mundial do Poder de Deus</option>
                 <option value='17'>Nova Vida</option>
@@ -86,17 +86,18 @@ $visibilidade = $usuario->visibilidade==null?true:json_decode($usuario->visibili
                 <option value='24'>Nenhuma</option>
             </select>
         </div>
-        <div class="input" data-esconder="<? echo $visibilidade===true?0:($visibilidade['voce_e']?0:1); ?>">
+        <div class="input" data-esconder="<? echo $visibilidade===true?1:($visibilidade['voce_e']?0:1); ?>">
             <label>Você é</label>
             <select name="voce_e" disabled>
                 <option value="0"></option>
-                <option value="1">Novo Converso</option>
+                <option value="1">Novo Convertido</option>
                 <option value="2">Membro</option>
                 <option value="3">Cantor (a)</option>
                 <option value="4">Musico (a)</option>
                 <option value="5">Ministra Louvor</option>
                 <option value="6">Ministra Estudos</option>
                 <option value="7">Pregador (a)</option>
+                <option value="8">Outro (a)</option>
             </select>
         </div>
         
@@ -115,7 +116,7 @@ $visibilidade = $usuario->visibilidade==null?true:json_decode($usuario->visibili
             </select>
         </div>
 
-        <div class="input" data-esconder="<? echo $visibilidade===true?0:($visibilidade['site_facebook']?0:1); ?>">
+        <div class="input" data-esconder="<? echo $visibilidade===true?1:($visibilidade['site_facebook']?0:1); ?>">
             <label>Site ou página do facebook</label>
             <input type="text" name="site_facebook" disabled>
         </div>

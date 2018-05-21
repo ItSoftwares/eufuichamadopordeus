@@ -1,6 +1,7 @@
 var funcao = "";
 var original = "";
 var imagem = {w: 0, h: 0};
+var cropper;
 
 $(document).ready(function() { 
     new dgCidadesEstados({
@@ -41,6 +42,13 @@ $(document).ready(function() {
     
     $("#arquivos ul").children().remove();
     $("#arquivos ul").append(filhos);
+
+    usuario.visibilidade = JSON.parse(usuario.visibilidade);
+
+    $.each(usuario.visibilidade, function(i, value) {
+    	if (i=="nome" || i=="cidade" || i=="estado") return true;
+    	$("#informacoes-visiveis [name="+i+"]").attr("checked", value);
+    })
 });
 
 $("[name=pais]").change(function() {
@@ -210,10 +218,24 @@ $("#foto input[type=file]").change(function() {
                 return;
             }
         
-            $("#foto img").attr("src", img.src);
+            // $("#foto img").attr("src", img.src);
             
-            imagem.w = img.width;
-            imagem.h = img.height;
+            // imagem.w = img.width;
+            // imagem.h = img.height;
+            $imagem = $('#imagem-cortada');
+            $imagem.attr('src', img.src);
+            $imagem.cropper({
+				aspectRatio: 1, 
+				viewMode: 2, 
+				modal: true, 
+				background: false, 
+				autoCrop: true, 
+				autoCropArea: 1,
+				crop: function(event) {
+				}
+			});
+        	cropper = $imagem.data('cropper');
+            $("#cropper").fadeIn().css("display", "flex");
         }
 
         reader.onload = function (e) {
@@ -223,6 +245,17 @@ $("#foto input[type=file]").change(function() {
         reader.readAsDataURL(input.files[0]);
     }
 }); 
+
+$("#cropper button").click(function() {
+	cropper.getCroppedCanvas().toBlob(function(blob) {
+		console.log(blob);
+	});
+});
+
+$("#cropper .fechar").click(function() {
+	cropper.destroy();
+	$("#cropper").fadeOut();
+});
 
 function limparImagemPerfil() {
     $("#foto img").attr("src", original);

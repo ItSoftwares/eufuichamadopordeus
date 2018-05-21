@@ -255,6 +255,7 @@ $(document).on('click', 'a.criador', function(e) {
 	id = $(this).attr("data-id");
 
 	if (participanteId==id) return;
+	if (usuario==0) return;
 
 	$("#participante *").remove();
 	$("#participante").append("<p class='aviso'>Carregando...</p>");

@@ -27,10 +27,13 @@ $select = "conta";
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <link rel="shortcut icon" type="image/png" href="img/logo.png"/>
         <link rel="stylesheet" href="../css/geral.css" media="(min-width: 1000px)">
+        <link rel="stylesheet" href="../css/cropper.css">
         <link rel="stylesheet" href="../css/conta.css" media="(min-width: 1000px)">
         <link rel="stylesheet" href="../cssmobile/geral.css" media="(max-width: 999px)">
         <link rel="stylesheet" href="../cssmobile/conta.css" media="(max-width: 999px)">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/api/cropper.js"></script>
+        <script type="text/javascript" src="../js/api/jquery-cropper.js"></script>
     </head>
     
     <body>
@@ -131,7 +134,7 @@ $select = "conta";
                                 <option value='11'>Evangelho Quadrangular</option>
                                 <option value='12'>Internacional da Graça de Deus</option>
                                 <option value='13'>Luterana</option>
-                                <option value='14'>Maranata</option>
+                                <option value='14'>Igreja Maranata</option>
                                 <option value='15'>Metodista</option>
                                 <option value='16'>Mundial do Poder de Deus</option>
                                 <option value='17'>Nova Vida</option>
@@ -148,13 +151,14 @@ $select = "conta";
                             <label>Você é</label>
                             <select name="voce_e">
                                 <option value="0">Escolha</option>
-                                <option value="1">Novo Converso</option>
+                                <option value="1">Novo Convertido</option>
                                 <option value="2">Membro</option>
                                 <option value="3">Cantor (a)</option>
                                 <option value="4">Musico (a)</option>
                                 <option value="5">Ministra Louvor</option>
                                 <option value="6">Ministra Estudos</option>
                                 <option value="7">Pregador (a)</option>
+                                <option value="8">Outro (a)</option>
                             </select>
                         </div>
                     </div>
@@ -490,37 +494,37 @@ $select = "conta";
                 <form>
                     <ul>
                         <li class="checkbox">
-                            <input type="checkbox" name="nome" id="nome" disabled><label for="nome"><div><img src='../../img/input-mark.png'></div><span>Nome</span></label>
+                            <input type="checkbox" name="nome" id="nome" disabled checked><label for="nome"><div><img src='../../img/input-mark.png'></div><span>Nome</span></label>
                         </li>
                         <li class="checkbox">
-                            <input type="checkbox" name="celular" id="celular" disabled><label for="celular"><div><img src='../../img/input-mark.png'></div><span>Celular</span></label>
+                            <input type="checkbox" name="celular" id="celular"><label for="celular"><div><img src='../../img/input-mark.png'></div><span>Celular</span></label>
                         </li>
                         <li class="checkbox">
-                            <input type="checkbox" name="data_nascimento" id="data_nascimento" disabled><label for="data_nascimento"><div><img src='../../img/input-mark.png'></div><span>Data de Nascimento</span></label>
+                            <input type="checkbox" name="data_nascimento" id="data_nascimento"><label for="data_nascimento"><div><img src='../../img/input-mark.png'></div><span>Data de Nascimento</span></label>
                         </li>
                         <li class="checkbox">
                             <input type="checkbox" checked name="pais" id="pais"><label for="pais"><div><img src='../../img/input-mark.png'></div><span>País</span></label>
                         </li>
                         <li class="checkbox">
-                            <input type="checkbox" name="estado" id="estado" disabled><label for="estado"><div><img src='../../img/input-mark.png'></div><span>Estado</span></label>
+                            <input type="checkbox" name="estado" id="estado" disabled checked><label for="estado"><div><img src='../../img/input-mark.png'></div><span>Estado</span></label>
                         </li>
                         <li class="checkbox">
-                            <input type="checkbox" name="cidade" id="cidade" disabled><label for="cidade"><div><img src='../../img/input-mark.png'></div><span>Cidade</span></label>
+                            <input type="checkbox" name="cidade" id="cidade" disabled checked><label for="cidade"><div><img src='../../img/input-mark.png'></div><span>Cidade</span></label>
                         </li>
                         <li class="checkbox">
                             <input type="checkbox" checked name="estado_civil" id="estado_civil"><label for="estado_civil"><div><img src='../../img/input-mark.png'></div><span>Estado Civil</span></label>
                         </li>
                         <li class="checkbox">
-                            <input type="checkbox" checked name="igreja" id="igreja"><label for="igreja"><div><img src='../../img/input-mark.png'></div><span>Igreja</span></label>
+                            <input type="checkbox" checked name="igreja" id="igreja" checked><label for="igreja"><div><img src='../../img/input-mark.png'></div><span>Igreja</span></label>
                         </li>
                         <li class="checkbox">
                             <input type="checkbox" checked name="voce_e" id="voce_e"><label for="voce_e"><div><img src='../../img/input-mark.png'></div><span>Sou</span></label>
                         </li>
                         <li class="checkbox">
-                            <input type="checkbox" checked name="area_atuacao" id="area_atuacao"><label for="area_atuacao"><div><img src='../../img/input-mark.png'></div><span>Área de Atuação</span></label>
+                            <input type="checkbox" checked name="area_atuacao" id="area_atuacao" checked><label for="area_atuacao"><div><img src='../../img/input-mark.png'></div><span>Área de Atuação</span></label>
                         </li>
                         <li class="checkbox">
-                            <input type="checkbox" checked name="atua_como" id="atua_como"><label for="atua_como"><div><img src='../../img/input-mark.png'></div><span>Atuo Como</span></label>
+                            <input type="checkbox" checked name="atua_como" id="atua_como" checked><label for="atua_como"><div><img src='../../img/input-mark.png'></div><span>Atuo Como</span></label>
                         </li>
                         <li class="checkbox">
                             <input type="checkbox" checked name="site_facebook" id="site_facebook"><label for="site_facebook"><div><img src='../../img/input-mark.png'></div><span>Site ou Facebook</span></label>
@@ -530,6 +534,20 @@ $select = "conta";
                     <button class="botao">Atualizar</button>
                 </form>
             </div>
+        </section>
+
+        <section id="cropper" class="fundo">
+        	<img src="../img/fechar.png" class="fechar">
+
+        	<div>
+        		<div class="foto">
+        			<img src="../../img/foto_perfil.png" id="imagem-cortada">
+        		</div>
+				<div id="preview">
+					
+				</div>
+        		<button class="botao">Cortar</button>
+        	</div>
         </section>
         
         <? 

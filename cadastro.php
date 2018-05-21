@@ -118,7 +118,7 @@ if (isset($_GET['estado']) and $_GET['estado']=="completar") {
                             <option value='11'>Evangelho Quadrangular</option>
                             <option value='12'>Internacional da Graça de Deus</option>
                             <option value='13'>Luterana</option>
-                            <option value='14'>Maranata</option>
+                            <option value='14'>Igreja Maranata</option>
                             <option value='15'>Metodista</option>
                             <option value='16'>Mundial do Poder de Deus</option>
                             <option value='17'>Nova Vida</option>
@@ -135,13 +135,14 @@ if (isset($_GET['estado']) and $_GET['estado']=="completar") {
                         <label>Você é</label>
                         <select name="voce_e">
                             <option value="0">Escolha</option>
-                            <option value="1">Novo Converso</option>
+                            <option value="1">Novo Convertido</option>
                             <option value="2">Membro</option>
                             <option value="3">Cantor (a)</option>
                             <option value="4">Musico (a)</option>
                             <option value="5">Ministra Louvor</option>
                             <option value="6">Ministra Estudos</option>
                             <option value="7">Pregador (a)</option>
+                            <option value="8">Outro (a)</option>
                         </select>
                     </div>
                 </div>
