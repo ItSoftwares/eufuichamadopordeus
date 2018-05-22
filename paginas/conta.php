@@ -52,7 +52,11 @@ $select = "conta";
             
             <div style="<? echo isset($_GET['atualizar'])?"":"display: none"; ?>">
                 <h4>Este é seu Numero de ID: <span><? echo $usuario->id; ?></span></h4>
-                <button class="botao" id="ver">Informações Visíveis</button>
+                <div id="botoes">
+                	<button class="botao" id="ver">Informações Visíveis</button>
+	                <button class="botao" id="editar" type="button" <? echo isset($_GET['atualizar'])?"autofocus":""; ?>>Editar</button>
+	                <button class="botao" id="salvar">Salvar Informações</button>
+                </div>
                 <div class="clear"></div>
 
                 <form>
@@ -440,9 +444,6 @@ $select = "conta";
                             <label>Repetir Senha</label>
                             <input type="password" id="repetir_senha" placeholder="Repita a Senha" maxlength="20" minlength="8">
                         </div>
-                        
-                        <button class="botao" id="editar" type="button" <? echo isset($_GET['atualizar'])?"autofocus":""; ?>>Editar</button>
-                        <button class="botao" id="salvar">Salvar Informações</button>
                     </div>
                     
                     <!-- <div class="clear"></div> -->

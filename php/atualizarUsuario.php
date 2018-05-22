@@ -7,6 +7,8 @@ $dados = $_POST;
 
 $temp = unserialize($_SESSION['usuario']);
 
+var_dump($_FILES); exit;
+
 foreach($temp->toArray() as $key => $value) {
     if (isset($dados[$key]) && $dados[$key]==$value) {
         unset($dados[$key]);

@@ -37,8 +37,19 @@ section h2 span img {
     float: left;
 }
 
-#conta #ver {
+#conta #botoes {
     float: right;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+#conta #botoes button {
+	margin-bottom: 10px;
+}
+
+#salvar {
+	display: none;
 }
 
 #conta form {

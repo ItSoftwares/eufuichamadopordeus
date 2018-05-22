@@ -36,9 +36,19 @@ section h2:before {
     z-index: -1;
 }
 
-#ver {
-    margin: 0 auto 15px;
-    display: table;
+#conta #botoes {
+    float: right;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+#conta #botoes button {
+	margin-bottom: 10px;
+}
+
+#salvar {
+	display: none;
 }
 
 #conta {

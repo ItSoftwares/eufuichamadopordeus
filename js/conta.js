@@ -2,6 +2,7 @@ var funcao = "";
 var original = "";
 var imagem = {w: 0, h: 0};
 var cropper;
+var srcFinal = null;
 
 $(document).ready(function() { 
     new dgCidadesEstados({
@@ -74,6 +75,7 @@ $("#editar").click(function() {
         funcao = "editar";
         $("#conta form input, #conta form select").attr("disabled", false);
         $("#conta [name=nome]").focus().select();
+        $("#salvar").show();
     } 
     else {
         $(this).css({background: "#5e5882"}).text("Editar");
@@ -82,6 +84,7 @@ $("#editar").click(function() {
         
         restaurarInformacoes();
         $("#conta form input, #conta form select").attr("disabled", true)
+        $("#salvar").hide();
     }
 });
 
@@ -132,9 +135,10 @@ $("#conta form").submit(function(e) {
         return;
     }
 
-    dados = new FormData(this);
+    dados = new FormData();
 
     if (imagem.w>0) {
+    	data.foto = srcFinal;
         data.larguraImagem = imagem.w;
         data.alturaImagem = imagem.h;
     }
@@ -210,13 +214,13 @@ $("#foto input[type=file]").change(function() {
                 return;
             }
             
-            proporcaoHeight = 200*img.height/img.width;
+            // proporcaoHeight = 200*img.height/img.width;
             
-            if (proporcaoHeight<200) {
-                chamarPopupInfo("Proporções inválidas. A imagem deve ser quadrada");
-                limparImagemPerfil();
-                return;
-            }
+            // if (proporcaoHeight<200) {
+            //     chamarPopupInfo("Proporções inválidas. A imagem deve ser quadrada");
+            //     limparImagemPerfil();
+            //     return;
+            // }
         
             // $("#foto img").attr("src", img.src);
             
@@ -231,6 +235,7 @@ $("#foto input[type=file]").change(function() {
 				background: false, 
 				autoCrop: true, 
 				autoCropArea: 1,
+				// minCropBoxWidth: 200,
 				crop: function(event) {
 				}
 			});
@@ -247,9 +252,17 @@ $("#foto input[type=file]").change(function() {
 }); 
 
 $("#cropper button").click(function() {
+	canvas = cropper.getCroppedCanvas().toDataURL();
+	srcFinal = canvas;
 	cropper.getCroppedCanvas().toBlob(function(blob) {
-		console.log(blob);
+		// srcFinal = blob;
 	});
+
+	$("#foto img").attr("src", canvas);
+	imagem.w = cropper.getCropBoxData().width;
+	imagem.h = cropper.getCropBoxData().width;
+	cropper.destroy();
+	$("#cropper").fadeOut();
 });
 
 $("#cropper .fechar").click(function() {
@@ -288,7 +301,9 @@ function restaurarInformacoes() {
 function atualizarUsuario(dados, editar, sucesso) {
     editar = editar || false;
     sucesso = sucesso || false;
-    // console.log(dados);  return;
+
+    $("#salvar").attr("disabled", true);
+
     $.ajax({
         url: "../php/handler/usuarioHandler.php",
         type: "post",
@@ -311,6 +326,8 @@ function atualizarUsuario(dados, editar, sucesso) {
             } else {
                 chamarPopupErro("erro");
             }
+
+            $("#salvar").attr("disabled", false);
         }, 
         error: function(result) {
             console.log(result);

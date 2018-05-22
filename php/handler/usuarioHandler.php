@@ -2,7 +2,7 @@
 require "../conexao.php";
 require "../classes/usuario.class.php";
 require "../vendor/autoload.php";
-
+// var_dump($_FILES); exit;
 if (isset($_POST['funcao'])) {
     if (!isset($_SESSION)) session_start();
     $dados = $_POST;

@@ -97,10 +97,12 @@ class usuario {
     public function atualizar($arquivos = null) {
         $temp = $this->id;
 
-        if ($arquivos!=null and is_uploaded_file($arquivos['foto_perfil']['tmp_name'])) {
-            $this->foto_perfil = $this->mudarFoto($arquivos['foto_perfil'], $this->larguraImagem, $this->alturaImagem);
+        // if ($arquivos!=null and is_uploaded_file($arquivos['foto_perfil']['tmp_name'])) {
+        if ($this->estaDeclarado('foto')) {
+            $this->foto_perfil = $this->mudarFoto($this->foto, $this->larguraImagem, $this->alturaImagem);
             $this->unsetAtributo('alturaImagem');
             $this->unsetAtributo('larguraImagem');
+            $this->unsetAtributo('foto');
         }
 
         DBupdate("usuario", $this->valores_atualizar, "where id={$temp}");
@@ -110,26 +112,15 @@ class usuario {
     }
 
     public function mudarFoto($imagem, $w, $h) {
+    	// var_dump($imagem); exit;
         $dirname = realpath("../..".DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.'servidor'.DIRECTORY_SEPARATOR.'thumbs-usuarios'.DIRECTORY_SEPARATOR;
-        $save = $this->id.time().".png";
-        
-        switch (pathinfo($imagem['name'], PATHINFO_EXTENSION))
-        {
-            case 'jpeg':
-            case 'jpg':
-                $img = imagecreatefromjpeg($imagem['tmp_name']);
-            break;
-            case 'png':
-                $img = imagecreatefrompng($imagem['tmp_name']);
-            break;
-            default:
-                die('Invalid image type');
-        }
-        
-        $img2 = imagecrop($img, ['x' => 0, 'y' => 0, 'width' => $w, 'height' => $w]);
+        $save = $this->id.time().".jpg";
 
-        imagejpeg($img2, $dirname.$save, 50);
-        imagedestroy($img2);
+        // echo pathinfo($imagem['name'], PATHINFO_EXTENSION); exit;
+        
+        $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $imagem));
+        $img = imagecreatefromstring($data);
+        imagejpeg($img, $dirname.$save, 90);
         
         if ($this->foto_perfil!=null || $this->foto_perfil!="") unlink($dirname.$this->foto_perfil);
         
