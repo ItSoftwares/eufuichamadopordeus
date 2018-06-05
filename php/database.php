@@ -29,7 +29,7 @@ function DBcreate($tabela, array $data) {
 function DBselect($tabela, $param = null, $campos = '*') {
     $param = ($param) ? " " . $param : null;
     $query = "select {$campos} from {$tabela}{$param}";
-    
+    // echo $query; exit;
     $result = DBexecute($query);
 
     if (mysqli_num_rows($result) > 0) {

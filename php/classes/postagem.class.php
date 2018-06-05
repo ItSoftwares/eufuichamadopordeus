@@ -8,6 +8,12 @@ class postagem {
         $this->time = time();
         $this->id = DBcreate('postagem', $this->toArray());
 
+        DBcreate('notificacao_postagem', array(
+        	'id_usuario'=>$this->id_usuario,
+        	'id_postagem'=>$this->id,
+        	'time'=>time()
+        ));
+
         return array('estado'=>1, 'mensagem'=>"Postagem criada com sucesso!", 'postagem'=> $this->toArray());
     }
     
@@ -17,10 +23,14 @@ class postagem {
         return array('estado'=>1, 'mensagem'=>"Postagem alterada!", 'postagem'=>$this->toArray());
     }
 
-    public function carregar($area_atuacao, $atua_como) {
-        $postagens = DBselect('postagem p INNER JOIN usuario u ON p.id_usuario = u.id', "where p.area_atuacao = '{$area_atuacao}' and p.atua_como = {$atua_como}", "p.*, u.foto_perfil, u.nome, u.cidade, u.estado, (select COUNT(id) from postagem_resposta where id_postagem = p.id) respostas");
+    public function carregar($area1, $area2 = null, $area3 = null) {
+    	$query = "where p.area1 = '{$area1}'";
+    	if ($area2!=null) $query .= " and p.area2 = '{$area2}'";
+    	if ($area3!=null) $query .= " and p.area3 = '{$area3}'";
 
-        $respostas = DBselect("postagem_resposta r INNER JOIN usuario u ON r.id_usuario = u.id", "where id_postagem in (select id from postagem where area_atuacao = '{$area_atuacao}' and atua_como = {$atua_como}) order by id_postagem DESC, time ASC", 'r.*, u.nome, u.cidade, u.estado, u.foto_perfil, u.id as id_usuario');
+        $postagens = DBselect('postagem p INNER JOIN usuario u ON p.id_usuario = u.id', $query, "p.*, u.foto_perfil, u.nome, u.cidade, u.estado, (select COUNT(id) from postagem_resposta where id_postagem = p.id) respostas");
+
+        $respostas = DBselect("postagem_resposta r INNER JOIN usuario u ON r.id_usuario = u.id", "where id_postagem in (select id from postagem p {$query}) order by id_postagem DESC, time ASC", 'r.*, u.nome, u.cidade, u.estado, u.foto_perfil, u.id as id_usuario');
 
         return array('postagens'=>$postagens, 'respostas'=>$respostas);
     }

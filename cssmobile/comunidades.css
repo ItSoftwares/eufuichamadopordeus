@@ -8,7 +8,7 @@ body {
 
 #nome h1 {
 	font-family: reitam;
-    font-size: 4em;
+    font-size: 2.6em;
 }
 
 #inicio, footer {
@@ -329,6 +329,14 @@ button#inbox {
 	z-index: 3;
 }
 
+button#icon-notificacao {
+    position: fixed;
+    left: 10px;
+    bottom: 55px;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    z-index: 3;
+}
+
 #nova-postagem > div {
 }
 
@@ -522,4 +530,47 @@ article#participante {
     padding: 10px;
     float: right;
     float: right;
+}
+
+#notificacoes {
+	display: none;
+	position: fixed;
+    left: 50px;
+    bottom: 55px;
+    height: 400px;
+    width: calc(100% - 57px);
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    z-index: 3;
+    overflow-y: auto;
+}
+
+#notificacoes ul {
+	list-style: none;
+}
+
+#notificacoes .notificacao {
+    font-size: .8em;
+}
+
+#notificacoes .notificacao a {
+    color: #666;
+    text-decoration: none;
+    padding: 10px;
+    box-sizing: border-box;
+    display: block;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+#notificacoes .notificacao span.time{
+    font-size: .9em;
+    text-align: right;
+    display: block;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+#notificacoes .aviso {
+	margin-top: 20px;
 }

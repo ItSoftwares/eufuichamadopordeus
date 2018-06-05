@@ -32,7 +32,7 @@ function verificarSessao($adm = 0) {
 //        echo "<br>".(intval($expire)+(3*60*60))."<br>";
 //        var_dump(time()>intval($expire)+(3*60*60));
 //        exit;
-        header("location: login?set=1");
+        header("location: /login?set=1");
     }
 }
 

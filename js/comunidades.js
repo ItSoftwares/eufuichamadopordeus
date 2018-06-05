@@ -1,16 +1,25 @@
 var funcao = "nova";
 var index;
 var participanteId;
+var pronto = false;
 
 $(document).ready(function() {
 	$("select[name=area_atuacao] option").each(function(i, elem) {
         $(this).val($(this).text());
     });
 
-	$("#inicio select[name=area_atuacao]").val(area_atuacao);
-	$("#inicio select[name=atua_como]").val(atua_como);
+    if (area1=="Brasil") {
+    	new dgCidadesEstados({
+	        estado: $("#estado")[0],
+	        cidade: $("#cidade")[0],
+	        estadoVal: '<%=Request("estado") %>',
+	        cidadeVal: '<%=Request("cidade") %>'
+	    });
+    }
 
-	// if (postagens.length==0)
+    $("#inicio select option").each(function(i, elem) {
+    	$(elem).val($(elem).text());
+    });
 
 	temp = {};
 	$.each(respostas, function(i, value) {
@@ -33,13 +42,34 @@ $(document).ready(function() {
 		$(".mensagem[data-referencia="+value.id+"] .fez").before(temp);
 		$(".mensagem[data-referencia="+value.id+"] form").hide();
 	});
+
+	$("#inicio select[name=area1]").val(area1);
+	if (area2!="" && area2!=undefined) $("#inicio select[name=area2]").val(area2).change();
+	if (area3!="" && area3!=undefined) $("#inicio select[name=area3]").val(area3);
+
+	pronto = true;
 });
 
 $("#inicio nav select").change(function() {
-	area_atuacao = $("#inicio [name=area_atuacao]").val();
-	atua_como = $("#inicio select[name=atua_como]").val();
+	if (!pronto) return;
+	if (area1!=$("#inicio [name=area1]").val()) {
+		area1 = $("#inicio [name=area1]").val();
+		area2 = "";
+		area3 = "";
+	} else if (area2!=$("#inicio [name=area2]").val()) {
+		area1 = $("#inicio [name=area1]").val();
+		area2 = $("#inicio [name=area2]").val();
+		area3 = "";
+	} else {
+		area1 = $("#inicio [name=area1]").val();
+		area2 = $("#inicio [name=area2]").val();
+		area3 = $("#inicio [name=area3]").val();
+	}
 
-	location.href = "/paginas/comunidades/"+area_atuacao+"/"+atua_como;
+	link = "/paginas/comunidades/"+area1;
+	if (area2!="" && area2!=undefined) link += "/"+area2;
+	if (area3!="" && area3!=undefined) link += "/"+area3;
+	location.href = link;
 });
 
 $(document).on('click', "li.postagem h3", function(e) {
@@ -86,6 +116,10 @@ $("#inbox").click(function() {
 	$("#postagens").hide();
 });
 
+$("#icon-notificacao").click(function() {
+	$("#notificacoes").fadeToggle();
+});
+
 $("#nova-postagem .fechar").click(function() {
 	$("#nova-postagem").fadeOut();
 	$("#nova-postagem form")[0].reset();
@@ -103,8 +137,9 @@ $("#nova-postagem form").submit(function(e) {
 
 	data.funcao = funcao;
 	if (funcao == 'nova') {
-		data.area_atuacao = area_atuacao;
-		data.atua_como = atua_como;
+		data.area1 = area1;
+		if (area2!="" && area2!=undefined) data.area2 = area2;
+		if (area3!="" && area3!=undefined) data.area3 = area3;
 		data.id_usuario = usuario.id;
 	} else {
 		data.id = postagens[index].id;

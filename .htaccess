@@ -32,7 +32,7 @@ RewriteRule ^paginas/certificado?$ paginas/certificado.php
 RewriteRule ^paginas/sobre?$ paginas/sobre.php
 RewriteRule ^paginas/hoje?$ paginas/hoje.php 
 #RewriteRule ^paginas/comunidades?$ paginas/comunidades.php 
-RewriteRule ^paginas/comunidades/([^/-]*)/([^/-]*)$ paginas/comunidades.php?area_atuacao=$1&atua_como=$2
+RewriteRule ^paginas/comunidades/([^/-]*)/?([^/-]*)/?([^/-]*)$ paginas/comunidades.php?area1=$1&area2=$2&area3=$3
 RewriteRule ^paginas/comunidades?$ paginas/comunidades.php
 RewriteRule ^paginas/participante/([^/-]*)$ paginas/participante.php?id=$1
 RewriteRule ^paginas/conteudo?$ paginas/conteudo.php 
