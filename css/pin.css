@@ -43,7 +43,8 @@
     width: 100%;
     padding: 10px 5px;
     transition: .3s ease;
-    border-bottom: 2px solid #e2e2e2;
+    border: none;
+    border-bottom: 2px solid #e2e2e2 !important;
     font-size: .85em;
     resize: none;
     height: 41px;

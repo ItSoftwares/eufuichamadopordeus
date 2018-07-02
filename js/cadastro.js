@@ -1,5 +1,6 @@
 var original = "";
 var imagem = {w: 0, h: 0};
+var srcFinal = null;
 
 $(document).ready(function() {
     $("[name=data_nascimento]").mask("00/00/0000");
@@ -89,16 +90,18 @@ $("form").submit(function(e) {
         return;
     }
 
+    if (imagem.w>0) {
+        data.foto = srcFinal;
+        data.larguraImagem = imagem.w;
+        data.alturaImagem = imagem.h;
+    }
+
     dados = new FormData(this);
 
     $.each(data, function(i, value) {
         dados.set(i, value);
     });
 
-    if (imagem.w>0) {
-        dados.append("larguraImagem", imagem.w);
-        dados.append("alturaImagem", imagem.h);
-    }
     
     $("form button").attr("disabled", true);
     $.ajax({
@@ -123,7 +126,7 @@ $("form").submit(function(e) {
                         console.log(result);
             //            return;
                         if(result.estado==1) {
-                            location.href="paginas/hoje";
+                            location.href="paginas/comunidades";
                         } else if(result.estado==2 || result.estado==3) {
                             chamarPopupInfo(result.mensagem);
                             $("form button").attr("disabled", false);
@@ -177,18 +180,33 @@ $("#foto input[type=file]").change(function() {
                 return;
             }
             
-            proporcaoHeight = 200*img.height/img.width;
+            // proporcaoHeight = 200*img.height/img.width;
             
-            if (proporcaoHeight<200) {
-                chamarPopupInfo("Proporções inválidas. A imagem deve ser quadrada");
-                limparImagemPerfil();
-                return;
-            }
+            // if (proporcaoHeight<200) {
+            //     chamarPopupInfo("Proporções inválidas. A imagem deve ser quadrada");
+            //     limparImagemPerfil();
+            //     return;
+            // }
         
-            $("#foto img").attr("src", img.src);
+            // $("#foto img").attr("src", img.src);
             
-            imagem.w = img.width;
-            imagem.h = img.height;
+            // imagem.w = img.width;
+            // imagem.h = img.height;
+            $imagem = $('#imagem-cortada');
+            $imagem.attr('src', img.src);
+            $imagem.cropper({
+				aspectRatio: 1, 
+				viewMode: 2, 
+				modal: true, 
+				background: false, 
+				autoCrop: true, 
+				autoCropArea: 1,
+				// minCropBoxWidth: 200,
+				crop: function(event) {
+				}
+			});
+        	cropper = $imagem.data('cropper');
+            $("#cropper").fadeIn().css("display", "flex");
         }
 
         reader.onload = function (e) {
@@ -198,6 +216,25 @@ $("#foto input[type=file]").change(function() {
         reader.readAsDataURL(input.files[0]);
     }
 }); 
+
+$("#cropper button").click(function() {
+	canvas = cropper.getCroppedCanvas().toDataURL();
+	srcFinal = canvas;
+	cropper.getCroppedCanvas().toBlob(function(blob) {
+		// srcFinal = blob;
+	});
+
+	$("#foto img").attr("src", canvas);
+	imagem.w = cropper.getCropBoxData().width;
+	imagem.h = cropper.getCropBoxData().width;
+	cropper.destroy();
+	$("#cropper").fadeOut();
+});
+
+$("#cropper .fechar").click(function() {
+	cropper.destroy();
+	$("#cropper").fadeOut();
+});
 
 $(".input.normal label").click(function() {
     $("#termos").fadeIn().css({display: "flex"});

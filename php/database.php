@@ -35,13 +35,13 @@ function DBselect($tabela, $param = null, $campos = '*') {
     if (mysqli_num_rows($result) > 0) {
         $arr = array();
 
-//         if (mysqli_num_rows($result)==1) {
-//             $arr = mysqli_fetch_assoc($result) or die('erro na conversão para array');
-//         } else {
+        // if (mysqli_num_rows($result)==1) {
+            // $arr = mysqli_fetch_assoc($result) or die('erro na conversão para array');
+        // } else {
         while ($row = mysqli_fetch_assoc($result)) {
             array_push($arr, $row);
         }
-//         }
+        // }
 
         return $arr;
     } else {
@@ -53,7 +53,7 @@ function DBdelete($tabela, $param) {
     $param = ($param) ? " " . $param : null;
     $query = "DELETE from {$tabela}{$param}";
 
-//    echo "<br>" . $query;
+   // echo "<br>" . $query;
 
     $result = DBexecute($query);
 
@@ -67,7 +67,7 @@ function DBupdate($tabela, array $dados, $param = null) {
 
     $query = null;
     
-//    var_dump($dados);
+   // var_dump($dados);
     
     foreach ($dados as $key => $valor) {
         $i++;
@@ -84,7 +84,7 @@ function DBupdate($tabela, array $dados, $param = null) {
     }
 
     $query .= $param;
-//     echo $query;
+    // echo $query; exit;
 
     $result = DBexecute($query);
     return $result;
@@ -126,7 +126,7 @@ function DBcreateVarios($tabela, array $data) {
 
     $query = "INSERT INTO {$tabela} ({$campos}) values {$valores}";
     
-//    echo $query;
+   // echo $query;
     $link = DBconnect();
 
     $result = mysqli_query($link, $query) or die(mysqli_error($link));
@@ -135,13 +135,5 @@ function DBcreateVarios($tabela, array $data) {
     
     return $result;
 }
-
-//$arr = array(
-//    array("nome" => "izac", "cidade" => "cedro", "sexo" => "homem"),
-//    array("nome" => "pai", "cidade" => "cedro", "sexo" => "homem"),
-//    array("nome" => "tais", "cidade" => "iguatu", "sexo" => "mulher")
-//);
-//
-//DBcreateVarios("teste", $arr);
 
 ?>

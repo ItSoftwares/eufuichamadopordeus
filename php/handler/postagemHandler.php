@@ -14,21 +14,31 @@ if (isset($_POST['funcao'])) {
         
         echo json_encode($result);
         exit;
-    } else if ($funcao=="responder") {
+    } 
+    else if ($funcao=="responder") {
         $post = new Postagem($dados);
         $result = $post->responder();
         
         echo json_encode($result);
         exit;
-    } else if ($funcao=="atualizar") {
+    } 
+    else if ($funcao=="atualizar") {
         $post = new Postagem($dados);
         $result = $post->atualizar();
         
         echo json_encode($result);
         exit;
-    } else if ($funcao=="excluir") {
+    } 
+    else if ($funcao=="excluir") {
         $post = new Postagem($dados);
         $result = $post->excluir();
+        
+        echo json_encode($result);
+        exit;
+    }
+    else if ($funcao=="atualizarResposta") {
+        $post = new Postagem($dados);
+        $result = $post->atualizarResposta();
         
         echo json_encode($result);
         exit;

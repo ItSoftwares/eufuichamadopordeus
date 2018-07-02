@@ -220,3 +220,29 @@ section h2:before {
     font-size: .9em;
     cursor: default;
 }
+
+#cropper {
+	align-items: baseline !important;
+	overflow-y: auto;
+}
+
+#cropper > div {
+	padding: 20px;
+    box-sizing: border-box;
+    margin-top: 40px !important;
+}
+
+#cropper .foto {
+	position: relative;
+	width: 100%;
+	box-shadow: 0 0 5px rgba(0,0,0,.3);
+	border-radius: 3px;
+    margin-bottom: 20px;
+    background: #b8b8b8;
+}
+
+#cropper .foto img {
+	width: 100%;
+	display: block;
+    background: #b8b8b8;
+}

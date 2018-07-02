@@ -13,12 +13,12 @@ else $usuario = false;
 if (count($_GET)==0) {
     if ($usuario==false) {
     	$area1 = "Area de Atuação";
-        $area2 = "Administração";
-        $area3 = 2;
+        $area2 = "";
+        $area3 = "";
     } else {
         $area1 = 'Area de Atuação';
         $area2 = $usuario->area_atuacao;
-        $area3 = $usuario->atua_como;
+        $area3 = "";
     }
 } else {
     $area1 = $_GET['area1'];
@@ -32,21 +32,21 @@ if ($area1=="") {
     header('location: /paginas/conta');
 }
 
-$atua_comoString = "";
-switch ($area2) {
-    case 1:
-        $area2String = "Estudante";
-        break;
-    case 2:
-        $area2String = "Profissional";
-        break;
-    case 3:
-        $area2String = "Técnico";
-        break;
-    case 4:
-        $area2String = "Superior";
-        break;
-}
+// $atua_comoString = "";
+// switch ($area3) {
+//     case 1:
+//         $area3 = "Estudante";
+//         break;
+//     case 2:
+//         $area3 = "Profissional";
+//         break;
+//     case 3:
+//         $area3 = "Técnico";
+//         break;
+//     case 4:
+//         $area3 = "Superior";
+//         break;
+// }
 
 // $notificacoes = DBselect('notificacao_postagem n inner join usuario u on n.id_usuario = u.id', "where n.id_postagem in (select id from postagem where id_usuario = {$usuario->id})", 'n.*, u.nome as usuario. p.area1, p.area2, p.area3');
 
@@ -356,7 +356,7 @@ $qtd = DBselect('usuario', 'where estado_conta=1', 'count(id) as qtd')[0]['qtd']
                             <option value=''>Linguagens e Códigos e suas Tecnologias</option>
                         </optgroup>
                     </select>
-                    <? if ($area2!="") { ?>
+                    <? if (false and $area2!="") { ?>
                     <select name="area3" id="atua_como">
                     	<option value="" selected=""></option>
                         <option value="Estudante">Estudante</option>
@@ -393,7 +393,7 @@ $qtd = DBselect('usuario', 'where estado_conta=1', 'count(id) as qtd')[0]['qtd']
                         <option value='23'>Outra</option>
                         <option value='24'>Nenhuma</option>
                     </select>
-                    <? if ($area2!="") { ?>
+                    <? if (false and $area2!="") { ?>
                     <select id="voce_e" name="area3">
                         <option value="" selected=""></option>
                         <option value="1">Novo Convertido</option>
@@ -575,18 +575,17 @@ $qtd = DBselect('usuario', 'where estado_conta=1', 'count(id) as qtd')[0]['qtd']
 
         <section id="notificacoes">
         	<ul>
-        		<!-- <li class="notificacao">
-					<a href="/paginas/comunidades/">
-						<p>Você tem uma nova resposta de teste em sua postagem!</p>
-						<span class="time">25/04/2018, 10:40</span>
-					</a>
-				</li> -->
         		<? 
         		if (count($notificacoes)==0) echo "<p class='aviso'>Nenhuma notificação!</p>";
         		foreach ($notificacoes as $noti) {
         		?>
 				<li class="notificacao">
-					<? $link = str_replace(" - ", "/", $titulo); ?>
+					<? 
+					// $link = str_replace(" - ", "/", $titulo); 
+					$link = $noti['area1'];
+	            	if ($noti['area2']!="") $link .= "/".$noti['area2'];
+	            	if ($noti['area3']!="") $link .= "/".$noti['area3'];
+					?>
 					<a href="/paginas/comunidades/<? echo $link; ?>">
 						<p>Você tem uma nova resposta de <? echo explode(" ", $noti['usuario'])[0]; ?> em sua postagem!</p>
 						<span class="time"></span>

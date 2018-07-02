@@ -91,7 +91,7 @@ if (!(isset($_GET['set']) and $_GET['set']==1) and array_key_exists("tipo_usuari
         <p><a href="https://www.instagram.com/itsoftwares/" target="_blank">Copyright © Todos os direitos reservados.</a></p>
     </body>
     
-    <script src="js/index.js"></script>
+    <script src="js/index.js?<? echo time(); ?>"></script>
     <? 
 //    session_unset();
 //    session_destroy();

@@ -181,3 +181,27 @@ footer img {
     width: 280px;
     margin-bottom: 20px;
 }
+
+.cropper-bg, .cropper-modal {
+	/*background: none;*/
+}
+
+#cropper > div {
+	width: 400px !important;
+	padding: 20px;
+}
+
+#cropper .foto {
+	position: relative;
+	width: 100%;
+	box-shadow: 0 0 5px rgba(0,0,0,.3);
+	border-radius: 3px;
+    margin-bottom: 20px;
+    background: #b8b8b8;
+}
+
+#cropper .foto img {
+	width: 100%;
+	display: block;
+    background: #b8b8b8;
+}

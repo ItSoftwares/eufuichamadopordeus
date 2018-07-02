@@ -9,7 +9,7 @@ class usuario {
         
         $result = DBselect('usuario', "where email = '{$this->email}'");
         
-        if (isset($result)) {
+        if (count($result)>0) {
             $result = $result[0];
             if ($this->email==$result['email']) {
                 return array('estado'=>2, 'mensagem'=>"Já existe algum usuário cadastrado com esse email!");
@@ -22,11 +22,12 @@ class usuario {
 
             $this->data_criacao = time();
 
-            if ($arquivos!=null and is_uploaded_file($arquivos['foto_perfil']['tmp_name'])) {
-                $this->foto_perfil = $this->mudarFoto($arquivos['foto_perfil'], $this->larguraImagem, $this->alturaImagem);
-                $this->unsetAtributo('alturaImagem');
-                $this->unsetAtributo('larguraImagem');
-            }
+            if ($this->estaDeclarado('foto')) {
+	            $this->foto_perfil = $this->mudarFoto($this->foto, $this->larguraImagem, $this->alturaImagem);
+	            $this->unsetAtributo('alturaImagem');
+	            $this->unsetAtributo('larguraImagem');
+	            $this->unsetAtributo('foto');
+	        }
 
             DBcreate('usuario', $this->toArray());
             

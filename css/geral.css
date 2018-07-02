@@ -70,7 +70,7 @@ input:-webkit-autofill:active {
 
 #container *::-webkit-scrollbar {
     width: 14px;
-    height: 18px;
+    height: 14px;
 }
 
 #container *::-webkit-scrollbar-thumb {

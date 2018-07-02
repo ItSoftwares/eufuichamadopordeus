@@ -1,5 +1,7 @@
 var funcao = "nova";
+var funcao2 = "responder";
 var index;
+var id_resposta = 0;
 var participanteId;
 var pronto = false;
 
@@ -87,7 +89,7 @@ $(document).on('click', "li.postagem h3", function(e) {
 			index = postagens[pai.attr('data-index')].id;
 
 			$.each(respostas[index], function(i, value) {
-				temp = adicionarReposta(value);
+				temp = adicionarReposta(value, i);
 
 				pai.find('ul').prepend(temp);
 			});
@@ -196,8 +198,14 @@ $(document).on('submit', "form.resposta", function(e) {
 	});
 	data = temp;
 
-	data.funcao = 'responder';
+	data.funcao = funcao2;
+
+	if (id_resposta==0) data.funcao = "responder";
 	data.id_usuario = usuario.id;
+
+	if (funcao2=="atualizarResposta") {
+		data.id = id_resposta;
+	}
 
 	console.log(data);
 
@@ -214,20 +222,29 @@ $(document).on('submit', "form.resposta", function(e) {
             if (result.estado==1) {
             	chamarPopupConf(result.mensagem);
             	resposta = result.resposta;
-	            if (!respostas.hasOwnProperty(resposta.id_postagem)) respostas[resposta.id_postagem] = [];
-	            respostas[resposta.id_postagem].push(resposta);
+	            
+	            if (funcao2=="responder") {
+	            	if (!respostas.hasOwnProperty(resposta.id_postagem)) respostas[resposta.id_postagem] = [];
+		            index = respostas[resposta.id_postagem].push(resposta)-1;
 
-	            resposta.foto_perfil = usuario.foto_perfil;
-	            resposta.nome = usuario.nome;
-	            resposta.estado = usuario.estado;
-	            resposta.cidade = usuario.cidade;
+		            resposta.foto_perfil = usuario.foto_perfil;
+		            resposta.nome = usuario.nome;
+		            resposta.estado = usuario.estado;
+		            resposta.cidade = usuario.cidade;
 
-	            temp = adicionarReposta(resposta);
+		            temp = adicionarReposta(resposta, index);
 
-	            pai.prepend(temp);
+		            pai.prepend(temp);
+	            } else {
+	            	$("li.postagem.sub[data-index="+index+"] .comentario").text(data.texto);
+	            	pai.find('button').text('Responder');
+	            }
 
 	            pai.find('form')[0].reset();
 	            pai.find('button').attr('disabled', false);
+
+	            funcao2 = "atualizarResposta";
+	            id_resposta = 0;
             }
         }, 
         error: function(result) {
@@ -242,22 +259,45 @@ $(document).on('click', ".menu img", function() {
 });
 
 $(document).on('click', ".menu .editar", function() {
-	$("#nova").click();
-	$("#nova-postagem h3").text('Editar Postagem');
-	funcao = 'atualizar';
-	index = $(this).closest('li.postagem').attr('data-index');
-	$("#nova-postagem [name=titulo]").val(postagens[index].titulo);
-	$("#nova-postagem [name=texto]").val(postagens[index].texto);
+	pai = $(this).closest('li.postagem');
+	index = pai.attr('data-index');
 
+	if (pai.hasClass('sub')) {
+		funcao2 = "atualizarResposta";
+		post = $(this).closest('li.postagem:not(.sub)');
+		resp = respostas[postagens[post.data('index')].id][index];
+
+		id_resposta = resp.id;
+
+		form = pai.closest('ul').find('form.resposta');
+		form.find('textarea').val(resp.texto).focus().select();
+		form.find('button').text("Atualizar");
+	} else {
+		funcao = 'atualizar';
+		$("#nova").click();
+		$("#nova-postagem h3").text('Editar Postagem');
+		
+		$("#nova-postagem [name=titulo]").val(postagens[index].titulo);
+		$("#nova-postagem [name=texto]").val(postagens[index].texto);
+
+	}
 	$(this).closest('.menu').find('img').click();
 });
 
 $(document).on('click', ".menu .excluir", function() {
-	index = $(this).closest('li.postagem').attr('data-index');
-
+	pai = $(this).closest('li.postagem');
+	post = $(this).closest('li.postagem:not(.sub)');
+	// console.log(post);
 	data = {};
 	data.funcao = 'excluir';
-	data.id = postagens[index].id;
+	index = pai.data('index');
+
+	if (pai.hasClass('sub')) {
+		data.id = respostas[postagens[post.data('index')].id][index].id;
+		data.resposta = 1;
+	} else {
+		data.id = postagens[index].id;
+	}
 
 	$(this).closest('.menu').find('img').click();
 	
@@ -343,15 +383,7 @@ function adicionarPostagem(post, index) {
 	temp = "";
 
 	temp += "<li class='postagem fechada' data-index='"+index+"'>";
-    temp += "<div class='resumo'>";
-    temp += "<h3>"+post.titulo+" <span>(0 Respostas)</span></h3>";
-
-    texto = post.texto;
-    texto = texto.length>300?texto.substr(0, 300)+"...":"";
-
-    temp += "<p>"+texto+"</p>";
-    temp += "</div>";
-    temp += "<a class='criador' href='/paginas/participante/"+usuario.id+"' data-id="+resposta.id_usuario+">";
+    temp += "<a class='criador' href='/paginas/participante/"+usuario.id+"' data-id="+post.id_usuario+">";
     if (usuario.foto_perfil==null || usuario.foto_perfil=="")
     	temp += "<img src='../../img/foto_perfil.png'>";
     else
@@ -361,6 +393,15 @@ function adicionarPostagem(post, index) {
     temp += "<p>"+usuario.cidade+"/"+usuario.estado+"</p>";
     temp += "</div>";
     temp += "</a>";
+
+    temp += "<div class='resumo'>";
+    temp += "<h3>"+post.titulo+" <span>(0 Respostas)</span></h3>";
+
+    texto = post.texto;
+    texto = texto.length>300?texto.substr(0, 300)+"...":"";
+
+    temp += "<p>"+texto+"</p>";
+    temp += "</div>";
 
     temp += "<div class='menu'>";
     temp += "<img src='../../img/menu2.png'>";
@@ -386,10 +427,10 @@ function adicionarPostagem(post, index) {
 	$("article > ul").prepend(temp);
 }
 
-function adicionarReposta(resposta) {
+function adicionarReposta(resposta, index) {
 	temp = "";
 
-	temp += "<li class='postagem sub'>";
+	temp += "<li class='postagem sub' data-index="+index+">";
     temp += "<div class='resumo'>";
     temp += "<h4>"+resposta.nome+".<span>"+resposta.cidade+"/"+resposta.estado+"</span></h4>";
     temp += "<p class='comentario'>"+resposta.texto+"</p>";
@@ -400,6 +441,18 @@ function adicionarReposta(resposta) {
     else
     	temp += "<img src='../../servidor/thumbs-usuarios/"+resposta.foto_perfil+"'>";
     temp += "</a>";
+
+    if (usuario!=0 && resposta.id_usuario==usuario.id) {
+	    temp += "<div class='menu'>";
+	    temp += "<img src='../../img/menu2.png'>";
+
+	    temp += "<div>";
+	    temp += "<span class='editar'>Editar</span>";
+	    temp += "<span class='excluir'>Excluir</span>";
+	    temp += "</div>";
+	    temp += "</div>";
+	}
+
     temp += "</li>";
 
     return temp;

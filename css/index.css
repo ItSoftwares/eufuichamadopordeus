@@ -62,7 +62,7 @@ body {
 }
 
 .titulo-normal:before {
-	content: "" !important;
+	content: unset !important;
 }
 
 body > p {

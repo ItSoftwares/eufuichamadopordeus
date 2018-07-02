@@ -19,10 +19,13 @@ if (isset($_GET['estado']) and $_GET['estado']=="completar") {
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <link rel="shortcut icon" type="image/png" href="img/logo.png"/>
         <link rel="stylesheet" href="css/geral.css" media="(min-width: 1000px)">
+        <link rel="stylesheet" href="css/cropper.css">
         <link rel="stylesheet" href="css/cadastro.css" media="(min-width: 1000px)">
         <link rel="stylesheet" href="cssmobile/geral.css" media="(max-width: 999px)">
         <link rel="stylesheet" href="cssmobile/cadastro.css" media="(max-width: 999px)">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/api/cropper.js"></script>
+        <script type="text/javascript" src="../js/api/jquery-cropper.js"></script>
     </head>
     
     <body>
@@ -447,6 +450,20 @@ if (isset($_GET['estado']) and $_GET['estado']=="completar") {
                 </div>
 <!--                <div class="clear"></div>-->
             </form>
+        </section>
+
+        <section id="cropper" class="fundo">
+        	<img src="../img/fechar.png" class="fechar">
+
+        	<div>
+        		<div class="foto">
+        			<img src="../../img/foto_perfil.png" id="imagem-cortada">
+        		</div>
+				<div id="preview">
+					
+				</div>
+        		<button class="botao">Cortar</button>
+        	</div>
         </section>
         
         <section id="termos" class="fundo">

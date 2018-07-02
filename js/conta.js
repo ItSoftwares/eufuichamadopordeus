@@ -88,6 +88,10 @@ $("#editar").click(function() {
     }
 });
 
+$("#salvar").click(function() {
+	$("#conta form").submit();
+});
+
 $("#conta form").submit(function(e) {
     e.preventDefault();
     
@@ -115,7 +119,6 @@ $("#conta form").submit(function(e) {
     data.data_nascimento = $("[name=data_nascimento]").cleanVal();
     data.celular = $("[name=celular]").cleanVal();
     data.funcao = "atualizar";
-
     
     if (data.celular.length<10) {
         $("[name=celular]").focus();
@@ -143,11 +146,10 @@ $("#conta form").submit(function(e) {
         data.alturaImagem = imagem.h;
     }
 
-
     $.each(data, function(i, value) {
         dados.set(i, value);
     });
-    // console.log(dados);
+    console.log(dados);
     
     atualizarUsuario(dados, true);
 });

@@ -34,7 +34,7 @@ $("#login form").submit(function(e) {
                 chamarPopupInfo(result.mensagem);
                 $("form button").attr("disabled", false);
             } else if (result.estado==4) {
-                location.href="adm/participantes";
+                location.href="adm/pin";
             } else if (result.estado==10) {
                 location.href="cadastro?estado=completar&id="+result.id;
             } else {
